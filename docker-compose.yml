@@ -1,0 +1,6 @@
+﻿services:
+  rudyhealthcare:
+    image: rudyhealthcare
+    build:
+      context: .
+      dockerfile: Dockerfile
