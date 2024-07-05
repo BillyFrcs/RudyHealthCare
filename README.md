@@ -1,1 +1,1 @@
-<h1>Dr. Rudy Gunawan Health Care</h1>
+<h1 align="center">Dr. Rudy Gunawan Health Care</h1>
