@@ -1,7 +1,7 @@
 {
   "name": "rudyhealthcare-preview",
   "version": "1.0.0",
-  "description": "<h1 align=\"center\">dr. Rudy Gunawan Health Care (Preview)</h1>",
+  "description": "dr. Rudy Gunawan Health Care (Preview)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
