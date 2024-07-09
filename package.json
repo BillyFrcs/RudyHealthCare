@@ -1,0 +1,22 @@
+{
+  "name": "rudyhealthcare-preview",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">dr. Rudy Gunawan Health Care (Preview)</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BillyFrcs/RudyHealthCare.git"
+  },
+  "author": "Billy Francois",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BillyFrcs/RudyHealthCare/issues"
+  },
+  "homepage": "https://github.com/BillyFrcs/RudyHealthCare#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
