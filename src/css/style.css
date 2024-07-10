@@ -1,0 +1,117 @@
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Jost", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+}
+
+.main-font-color {
+  color: #5a316b;
+}
+
+.main-font-color:hover {
+  font-weight: bold;
+}
+
+.main-background-color {
+  background-color: #78428f;
+}
+
+.capsule-btn {
+  border-radius: 50px;
+  padding: 10px 20px;
+  background: linear-gradient(100deg, #f9b522, #b060d1);
+  border: none;
+  width: 100%;
+}
+
+.hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 468px) {
+  .hero-text {
+    font-size: 2rem; /* Small screens */
+  }
+
+  .greet-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 420px) {
+  .greet-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .hero-text {
+    font-size: 2rem; /* Small screens */
+  }
+
+  .greet-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-text {
+    font-size: 3rem; /* Medium screens */
+  }
+
+  .greet-text {
+    font-size: 1rem;
+  }
+
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-text {
+    font-size: 4rem; /* Large screens */
+  }
+
+  .greet-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-text {
+    font-size: 5rem; /* Extra-large screens */
+  }
+
+  .greet-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero-text {
+    font-size: 6rem; /* XXL screens */
+  }
+
+  .greet-text {
+    font-size: 1.6rem;
+  }
+}
