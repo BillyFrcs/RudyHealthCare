@@ -28,8 +28,10 @@
   background-color: #5a316b;
 }
 
-.gradient-main-background {
-  background: linear-gradient(100deg, #f9b522, #b060d1);
+.white-main-background {
+  background-color: #f8f9fa;
+
+  /* background: linear-gradient(100deg, #f9b522, #b060d1); */
 }
 
 .hero {
@@ -81,6 +83,13 @@
   font-weight: normal;
 }
 
+.custom-schedule-section {
+  position: absolute;
+  top: 48rem;
+  left: 0;
+  width: 100%;
+}
+
 @keyframes up-down {
   0% {
     transform: translateY(10px);
@@ -103,6 +112,14 @@
 
   .hero-jumbotron {
     padding-top: 7rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 31rem;
+    left: 0;
+    width: 100%;
+    padding: 20px;
   }
 }
 
