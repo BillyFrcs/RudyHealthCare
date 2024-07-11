@@ -28,6 +28,11 @@
   background-color: #5a316b;
 }
 
+.card-top-corner {
+  border-top-left-radius: 0.5rem; /* Match the card's border radius */
+  border-top-right-radius: 0.5rem; /* Match the card's border radius */
+}
+
 .white-main-background {
   background-color: #f8f9fa;
 
