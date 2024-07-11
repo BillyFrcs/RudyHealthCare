@@ -88,13 +88,6 @@
   font-weight: normal;
 }
 
-.custom-schedule-section {
-  position: absolute;
-  top: 48rem;
-  left: 0;
-  width: 100%;
-}
-
 @keyframes up-down {
   0% {
     transform: translateY(10px);
@@ -128,9 +121,17 @@
   }
 }
 
-@media (min-width: 420px) {
+@media (min-width: 470px) {
   .greet-text {
     font-size: 0.8rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 37rem;
+    left: 0;
+    width: 100%;
+    padding: 20px;
   }
 }
 
@@ -144,6 +145,15 @@
   }
 }
 
+@media (min-width: 576px) {
+  .custom-schedule-section {
+    position: absolute;
+    top: 42rem;
+    left: 0;
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .hero-text {
     font-size: 3rem; /* Medium screens */
@@ -151,6 +161,13 @@
 
   .greet-text {
     font-size: 1rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 45rem;
+    left: 0;
+    width: 100%;
   }
 
   [data-aos-delay] {
@@ -168,6 +185,15 @@
   }
 }
 
+@media (min-width: 1100px) {
+  .custom-schedule-section {
+    position: absolute;
+    top: 45rem;
+    left: 0;
+    width: 100%;
+  }
+}
+
 @media (min-width: 1200px) {
   .hero-text {
     font-size: 5rem; /* Extra-large screens */
@@ -176,6 +202,14 @@
   .greet-text {
     font-size: 1.5rem;
   }
+
+  .custom-schedule-section {
+  position: absolute;
+  top: 47rem;
+  left: 0;
+  width: 100%;
+}
+
 }
 
 @media (min-width: 1400px) {
