@@ -94,16 +94,17 @@
   text-overflow: ellipsis;
 }
 
-.custom-location-section {
+/* .custom-location-section {
   position: absolute;
   top: 75rem;
   width: 100%;
-}
+} */
 
-    .left-text, .right-text {
-      flex: 1 1 auto;
-      margin: 0 10px;
-    }
+.left-text,
+.right-text {
+  flex: 1 1 auto;
+  margin: 0 10px;
+}
 
 @keyframes up-down {
   0% {
@@ -143,11 +144,12 @@
     width: 100%;
   }
 
-        .left-text, .right-text {
-        flex: 1 1 100%;
-        text-align: center;
-        margin: 5px 0;
-      }
+  .left-text,
+  .right-text {
+    flex: 1 1 100%;
+    text-align: center;
+    margin: 5px 0;
+  }
 }
 
 @media (min-width: 470px) {
@@ -172,13 +174,17 @@
   .greet-text {
     font-size: 0.8rem;
   }
-}
 
-@media (min-width: 576px) {
   .custom-schedule-section {
     position: absolute;
     top: 42rem;
     left: 0;
+    width: 100%;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 80rem;
     width: 100%;
   }
 }
@@ -196,6 +202,12 @@
     position: absolute;
     top: 45rem;
     left: 0;
+    width: 100%;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 70rem;
     width: 100%;
   }
 
@@ -221,6 +233,12 @@
     left: 0;
     width: 100%;
   }
+
+  .custom-location-section {
+    position: absolute;
+    top: 70rem;
+    width: 100%;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -236,6 +254,12 @@
     position: absolute;
     top: 47rem;
     left: 0;
+    width: 100%;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 75rem;
     width: 100%;
   }
 }
