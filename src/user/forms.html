@@ -10,7 +10,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/logo/SingleLogo.svg" />
 
-    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
 
@@ -18,6 +18,144 @@
 </head>
 
 <body>
+    <header class="header fixed-top">
+        <nav class="navbar navbar-expand-lg bg-white shadow-lg">
+            <div class="container">
+                <a class="navbar-brand" href="../../index.html">
+                    <img src="../../assets/logo/LogoColor.svg" alt="Logo" width="" height=""
+                        class="d-inline-block align-text-top">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="registration-form-section">
+        <div class="container my-5">
+            <div class="justify-content-center">
+                <h1 class="text-center text-uppercase main-font-color fw-bold">Pendaftaran</h1>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-start">
+                    <h6 class="text-start fw-bold fs-5">Indentitas Diri</h6>
+                </div>
+
+                <div class="row input-container d-flex align-items-center mt-3">
+                    <!-- <p class="lead text-start fw-normal fs-6">Nama Lengkap</p> -->
+
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                        <input type="text" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Masukan nama lengkap">
+                    </div>
+
+                    <div class="col-12 col-md-6 d-flex justify-content-end">
+                        <input type="number" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Nomor Induk Kependudukan (NIK)">
+                    </div>
+
+                    <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
+                        <input type="text" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Tempat lahir">
+                    </div>
+
+                    <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
+                        <input type="date" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Tanggal lahir">
+                    </div>
+
+                    <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
+                        <input type="number" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Umur">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-start">
+                    <h6 class="text-start fw-bold fs-5">Jenis Kelamin</h6>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="laki-laki" id="laki-laki">
+                    <label class="form-check-label" for="laki-laki">Laki-Laki</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="perempuan" id="perempuan">
+                    <label class="form-check-label" for="perempuan">Perempuan</label>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-start">
+                    <h6 class="text-start fw-bold fs-5">Alamat</h6>
+                </div>
+
+                <div class="row input-container d-flex align-items-center mt-3">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                        <input type="text" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Alamat lengkap">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-start">
+                    <h6 class="text-start fw-bold fs-5">Kontak Pribadi</h6>
+                </div>
+
+                <div class="row input-container d-flex align-items-center mt-3">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                        <input type="email" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Masukan email">
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                        <input type="number" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Masukan no WhatsApp">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-start">
+                    <h6 class="text-start fw-bold fs-5">Status & Pekerjaan</h6>
+                </div>
+
+                <div class="row input-container d-flex align-items-center mt-3">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                        <input type="" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Masukan status">
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                        <input type="email" class="form-control rounded-5 custom-input" name="" id=""
+                            placeholder="Masukan pekerjaan">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-start">
+                    <h6 class="text-start fw-bold fs-5">Keluhan Sakit</h6>
+                </div>
+
+                <div class="row input-container d-flex align-items-center mt-3">
+                    <div class="">
+                        <textarea class="form-control rounded-4 custom-input" rows="5"
+                            placeholder="Masukan keluhan anda" name="" id=""></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <a type="submit" href="../../index.html" class="me-3 btn capsule-btn-red text-white w-25">Batal</a>
+
+                <button type="submit" class="btn capsule-btn text-white w-25">Submit</button>
+            </div>
+        </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
