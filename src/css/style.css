@@ -126,6 +126,10 @@
   background-color: rgb(176, 96, 209, 0.2) !important;
 }
 
+.no-resize {
+  resize: none; /* Disable resizing */
+}
+
 @keyframes up-down {
   0% {
     transform: translateY(10px);
