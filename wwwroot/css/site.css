@@ -1,22 +1,369 @@
-html {
-  font-size: 14px;
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Jost", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+}
+
+.main-font-color {
+  color: #5a316b;
+}
+
+.main-background-color {
+  background-color: #78428f;
+  height: auto !important;
+}
+
+.second-background-color {
+  background-color: #5a316b;
+}
+
+.card-top-corner {
+  border-top-left-radius: 0.5rem; /* Match the card's border radius */
+  border-top-right-radius: 0.5rem; /* Match the card's border radius */
+}
+
+.white-main-background {
+  background-color: #f8f9fa;
+
+  /* background: linear-gradient(100deg, #f9b522, #b060d1); */
+}
+
+.hero {
+  height: 100vh;
+  /* Full viewport height */
+  background-color: #78428f;
+
+  /* Background color */
+  display: flex;
+  align-items: center;
+  /* height: auto !important; */
+}
+
+.hero-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.custom-gradient-btn {
+  background: linear-gradient(100deg, #f9b522, #b060d1) !important;
+
+  /* border-radius: 50px;
+  padding: 10px 20px;
+  border: none;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+}
+
+/* .capsule-btn-red {
+  border-radius: 50px;
+  padding: 10px 20px;
+  background: rgb(209, 69, 69) !important;
+  border: none;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+} */
+
+.hero-jumbotron {
+  padding-top: 10rem;
+}
+
+.profile-jumbotron {
+  position: inherit;
+}
+
+.hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+.schedule-text {
+  color: #5ea9ba;
+}
+
+.simple-color-text {
+  color: #5ea9ba;
+  font-weight: normal;
+}
+
+.flex-nowrap-custom {
+  flex-wrap: nowrap;
+}
+
+.text-truncate-custom {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.left-text,
+.right-text {
+  flex: 1 1 auto;
+  margin: 0 10px;
+}
+
+.footer-controller {
+  background-color: #78428f;
+  width: auto !important;
+  height: auto !important;
+}
+
+.registration-form-section {
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+}
+
+.custom-input {
+  background-color: rgb(176, 96, 209, 0.2) !important;
+}
+
+.no-resize {
+  resize: none; /* Disable resizing */
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Responsive design */
+@media (max-width: 468px) {
+  .hero-text {
+    font-size: 2rem; /* Small screens */
+  }
+
+  .greet-text {
+    font-size: 0.8rem;
+  }
+
+  .hero-jumbotron {
+    padding-top: 7rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 31rem;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 70rem;
+    width: 100%;
+  }
+
+  .custom-about-section {
+    position: absolute;
+    top: 95rem;
+    width: 100%;
+  }
+
+  .custom-footer-section {
+    position: absolute;
+    top: 135rem;
+    width: 100%;
+  }
+
+  .left-text,
+  .right-text {
+    flex: 1 1 100%;
+    text-align: center;
+    margin: 5px 0;
+  }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+@media (min-width: 470px) {
+  .greet-text {
+    font-size: 0.8rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 37rem;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+  }
 }
 
-body {
-  margin-bottom: 60px;
+@media (min-width: 576px) {
+  .hero-text {
+    font-size: 2rem; /* Small screens */
+  }
+
+  .greet-text {
+    font-size: 0.8rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 42rem;
+    left: 0;
+    width: 100%;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 80rem;
+    width: 100%;
+  }
+
+  .custom-about-section {
+    position: absolute;
+    top: 110rem;
+    width: 100%;
+  }
+
+  .custom-footer-section {
+    position: absolute;
+    top: 150rem;
+    width: 100%;
+  }
+
+  .custom-footer-section {
+    position: absolute;
+    top: 160rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-text {
+    font-size: 3rem; /* Medium screens */
+  }
+
+  .greet-text {
+    font-size: 1rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 45rem;
+    left: 0;
+    width: 100%;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 70rem;
+    width: 100%;
+  }
+
+  .custom-about-section {
+    position: absolute;
+    top: 110rem;
+    width: 100%;
+  }
+
+  .custom-footer-section {
+    position: absolute;
+    top: 160rem;
+    width: 100%;
+  }
+
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-text {
+    font-size: 4rem; /* Large screens */
+  }
+
+  .greet-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .custom-schedule-section {
+    position: absolute;
+    top: 45rem;
+    left: 0;
+    width: 100%;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 70rem;
+    width: 100%;
+  }
+
+  .custom-about-section {
+    position: absolute;
+    top: 120rem;
+    width: 100%;
+  }
+
+  .custom-footer-section {
+    position: absolute;
+    top: 150rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-text {
+    font-size: 5rem; /* Extra-large screens */
+  }
+
+  .greet-text {
+    font-size: 1.5rem;
+  }
+
+  .custom-schedule-section {
+    position: absolute;
+    top: 47rem;
+    left: 0;
+    width: 100%;
+  }
+
+  .custom-location-section {
+    position: absolute;
+    top: 75rem;
+    width: 100%;
+  }
+
+  .custom-about-section {
+    position: absolute;
+    top: 130rem;
+    width: 100%;
+  }
+
+  .custom-footer-section {
+    position: absolute;
+    top: 165rem;
+    width: 100%;
+
+    /* justify-content: center;
+    align-items: center; */
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero-text {
+    font-size: 6rem; /* XXL screens */
+  }
+
+  .greet-text {
+    font-size: 1.6rem;
+  }
 }
