@@ -13,15 +13,24 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [Route("/")]
+    [Route("/Home")]
     public IActionResult Index()
     {
         return View();
     }
 
+    [Route("/Privacy")]
     public IActionResult Privacy()
     {
         return View();
     }
+
+    // [Route("/RegistrationForms")]
+    // public IActionResult RegistrationForms()
+    // {
+    //     return View();
+    // }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
