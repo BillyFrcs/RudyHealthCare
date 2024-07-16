@@ -123,6 +123,12 @@
   width: 100%;
 }
 
+.login-form-section {
+  position: absolute;
+  top: 8rem;
+  width: 100%;
+}
+
 .custom-input {
   background-color: rgb(176, 96, 209, 0.2) !important;
 }

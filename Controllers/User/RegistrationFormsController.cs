@@ -4,6 +4,7 @@ using RudyHealthCare.Models;
 
 namespace RudyHealthCare.Controllers.User;
 
+[Route("[controller]")]
 public class RegistrationFormsController : Controller
 {
     private readonly ILogger<RegistrationFormsController> _logger;
@@ -17,5 +18,11 @@ public class RegistrationFormsController : Controller
     public IActionResult RegistrationForms()
     {
         return View("Views/User/RegistrationForms.cshtml");
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View("Error!");
     }
 }

@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Login | Admin";
+}
+
+<header class=" header fixed-top">
+    <nav class="navbar navbar-expand-lg bg-white shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="/images/logo/LogoColor.svg" alt="Logo" width="" height=""
+                    class="d-inline-block align-text-top">
+            </a>
+        </div>
+    </nav>
+</header>
+
+<section class="login-form-section">
+    <div class="container col-xl-12 col-xxl-12 px-0 py-0">
+        <div class="row align-items-center g-lg-5">
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border-0 shadow-lg rounded-5 bg-transparent" action="post">
+                    <div class="mb-5 d-flex justify-content-center">
+                        <h1 class="display-6 fw-bold lh-1 main-font-color">Administrator</h1>
+                    </div>
+
+                    <!-- <div class="form-floating mb-3">
+                            <input type="text" class="form-control shadow-lg rounded-4" id="username" name="" placeholder="Username" required>
+                            <label for="username">Username</label>
+                        </div> -->
+
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control shadow-lg rounded-4" id="email" name="email"
+                            placeholder="Email" required>
+                        <label for="email">Email address</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control shadow-lg rounded-4" id="password" name="password"
+                            placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+
+                    <!-- <div class="col-12 col-md-10 d-flex justify-content-start">
+                            <p class="lead fw-bold text-danger fs-6">Invalid</p>
+                        </div> -->
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> <span class="">Remember me</span>
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                        class="btn btn-lg btn-primary rounded-5 border-0 shadow-lg w-100 h-auto custom-gradient-btn text-white">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
