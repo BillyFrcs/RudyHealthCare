@@ -30,6 +30,24 @@ namespace RudyHealthCare.Controllers.Admin
             return View("Views/Admin/Dashboard.cshtml");
         }
 
+        [Route("/Admin/Queues")]
+        public IActionResult Queues()
+        {
+            return View("Views/Admin/Queues.cshtml");
+        }
+
+        [Route("/Admin/Profile")]
+        public IActionResult Profile()
+        {
+            return View("Views/Admin/Profile.cshtml");
+        }
+
+        [Route("/Admin/MedicalRecords")]
+        public IActionResult MedicalRecords()
+        {
+            return View("Views/Admin/MedicalRecords.cshtml");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

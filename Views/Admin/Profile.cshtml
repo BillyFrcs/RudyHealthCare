@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Profile | Admin";
+    Layout = "_Layout";
+}
+
+<section class="wrapper">
+    <aside id="sidebar" class="rounded-end-4">
+        <div class="d-flex">
+            <button class="toggle-btn" type="button">
+                <i class="lni lni-grid-alt"></i>
+            </button>
+
+            <div class="sidebar-logo">
+                <a href="">Gidion Farma</a>
+            </div>
+        </div>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a asp-controller="Admin" asp-action="Dashboard" class="sidebar-link">
+                    <i class="lni lni-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a asp-controller="Admin" asp-action="Queues" class="sidebar-link">
+                    <i class="lni lni-layers"></i>
+                    <span>Antrian</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a asp-controller="Admin" asp-action="Profile" class="sidebar-link">
+                    <i class="lni lni-smile"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a asp-controller="" asp-action="" class="sidebar-link">
+                <i class="lni lni-exit"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="main p-3">
+        <div class="text-start mx-5 my-5">
+            <h5 class="mb-0 fs-5 fw-bold main-font-color">Admin Profile</h5>
+
+            <div class="my-3">
+                <p class="lead fs-6 my-1">Email : admin@mail.com</p>
+                <p class="lead fs-6 my-1">Password : admin1234</p>
+            </div>
+        </div>
+    </div>
+</section>

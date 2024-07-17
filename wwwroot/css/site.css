@@ -20,6 +20,14 @@
   height: auto !important;
 }
 
+.green-background-color {
+  background-color: #73ea56;
+}
+
+.pink-background-color {
+  background-color: #eb7a6b;
+}
+
 .second-background-color {
   background-color: #5a316b;
 }

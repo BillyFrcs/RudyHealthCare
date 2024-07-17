@@ -26,12 +26,6 @@ public class HomeController : Controller
         return View();
     }
 
-    // [Route("/RegistrationForms")]
-    // public IActionResult RegistrationForms()
-    // {
-    //     return View();
-    // }
-
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

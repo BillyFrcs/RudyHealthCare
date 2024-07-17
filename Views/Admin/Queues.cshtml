@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "Dashboard | Admin";
+    ViewData["Title"] = "Queues | Admin";
     Layout = "_Layout";
 }
 
@@ -11,7 +11,7 @@
             </button>
 
             <div class="sidebar-logo">
-                <a href="" class="text-uppercase">Gidion Farma</a>
+                <a href="">Gidion Farma</a>
             </div>
         </div>
 
@@ -46,75 +46,22 @@
 
     <div class="main p-3">
         <div class="text-start mx-5 my-5">
-            <div>
-                <h5 class="mb-0 fs-5 fw-bold main-font-color">Dashboard</h5>
+            <h5 class="mb-0 fs-5 fw-bold main-font-color">Proses Antrian</h5>
 
-                <div class="d-flex row justify-content-start my-3 gap-5">
-                    <div class="card rounded-4 border-0 second-background-color shadow-lg" style="width: 16rem;">
-                        <div class="card-body">
-                            <div class="d-flex mb-3 justify-content-start align-items-center">
-                                <i class="fa-solid fa-user text-white fs-3"></i>
-                                <h6 class="card-title text-white mx-3">Total <br /> Pasien</h6>
-                            </div>
+            <p class="lead fs-6 my-1">Daftar antrian pasien yang ingin konsultasi hari ini.</p>
 
-                            <h1 class="card-title text-white fw-bold fs-1">100</h1>
-                            <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
-                        </div>
-                    </div>
+            <div class="input-group">
+                <form action="post" class="form-outline d-flex gap-3 my-3" data-mdb-input-init>
+                    <input type="search" id="search" name="search" class="form-control custom-input rounded-1 shadow-sm"
+                        placeholder="Cari data pasien" required />
 
-                    <div class="card rounded-4 border-0 bg-warning shadow-lg" style="width: 16rem;">
-                        <div class="card-body">
-                            <div class="d-flex mb-3 justify-content-start align-items-center">
-                                <i class="fa-solid fa-boxes-stacked text-white fs-3"></i>
-                                <h6 class="card-title text-white mx-3">Total <br /> Pasien Antri</h6>
-                            </div>
-
-                            <h1 class="card-title text-white fw-bold fs-1">10</h1>
-                            <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
-                        </div>
-                    </div>
-
-                    <div class="card rounded-4 border-0 green-background-color shadow-lg" style="width: 16rem;">
-                        <div class="card-body">
-                            <div class="d-flex mb-3 justify-content-start align-items-center">
-                                <i class="fa-solid fa-square-check text-white fs-3"></i>
-                                <h6 class="card-title text-white mx-3">Total <br /> Pasien Diterima</h6>
-                            </div>
-
-                            <h1 class="card-title text-white fw-bold fs-1">80</h1>
-                            <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
-                        </div>
-                    </div>
-
-                    <div class="card rounded-4 border-0 pink-background-color shadow-lg" style="width: 16rem;">
-                        <div class="card-body">
-                            <div class="d-flex mb-3 justify-content-start align-items-center">
-                                <i class="fa-solid fa-xmark text-white fs-3"></i>
-                                <h6 class="card-title text-white mx-3">Total <br /> Pasien Ditolak</h6>
-                            </div>
-
-                            <h1 class="card-title text-white fw-bold fs-1">10</h1>
-                            <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
-                        </div>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-primary main-background-color shadow-lg">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
             </div>
 
-            <div>
-                <h5 class="mb-0 mt-5 fs-5 fw-bold main-font-color">Rekam Medis Pasien</h5>
-
-                <div class="input-group">
-                    <form action="post" class="form-outline d-flex gap-3 my-3" data-mdb-input-init>
-                        <input type="search" id="search" name="search"
-                            class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien"
-                            required />
-
-                        <button type="submit" class="btn btn-primary main-background-color shadow-lg">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-
+            <div class="my-3">
                 <table class="table table-striped my-3">
                     <thead>
                         <tr>
@@ -134,9 +81,9 @@
                             <td>Billy</td>
                             <td>081226543876</td>
                             <td>19/08/2024</td>
-                            <td><span class="badge green-background-color">Diterima</span></td>
+                            <td><span class="badge bg-warning">Antri</span></td>
                             <td>
-                                <a asp-controller="Admin" asp-action="MedicalRecords" class="text-decoration-none"><i
+                                <a href="" class="text-decoration-none"><i
                                         class="fa-solid fa-pen-to-square fs-4"></i></a>
 
                                 <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
@@ -152,7 +99,7 @@
                             <td>Billy</td>
                             <td>081226543876</td>
                             <td>19/08/2024</td>
-                            <td><span class="badge green-background-color">Diterima</span></td>
+                            <td><span class="badge bg-warning">Antri</span></td>
                             <td>
                                 <a href="" class="text-decoration-none"><i
                                         class="fa-solid fa-pen-to-square fs-4"></i></a>
@@ -170,7 +117,7 @@
                             <td>Billy</td>
                             <td>081226543876</td>
                             <td>19/08/2024</td>
-                            <td><span class="badge pink-background-color">Ditolak</span></td>
+                            <td><span class="badge bg-warning">Antri</span></td>
                             <td>
                                 <a href="" class="text-decoration-none"><i
                                         class="fa-solid fa-pen-to-square fs-4"></i></a>
@@ -205,7 +152,6 @@
                             </div>
                         </div>
                     </div>
-
                 </table>
 
                 <div aria-label="Page navigation example" class="my-4">
@@ -214,7 +160,7 @@
                             <a class="page-link">Previous</a>
                         </li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item "><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item">
                             <a class="page-link" href="#">Next</a>

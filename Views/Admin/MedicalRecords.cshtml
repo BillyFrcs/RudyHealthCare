@@ -1,0 +1,224 @@
+@{
+    ViewData["Title"] = "Medical Records | Admin";
+    Layout = "_Layout";
+}
+
+<section class="wrapper">
+    <aside id="sidebar" class="rounded-end-4">
+        <div class="d-flex">
+            <button class="toggle-btn" type="button">
+                <i class="lni lni-grid-alt"></i>
+            </button>
+
+            <div class="sidebar-logo">
+                <a href="">Gidion Farma</a>
+            </div>
+        </div>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a asp-controller="Admin" asp-action="Dashboard" class="sidebar-link">
+                    <i class="lni lni-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a asp-controller="Admin" asp-action="Queues" class="sidebar-link">
+                    <i class="lni lni-layers"></i>
+                    <span>Antrian</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a asp-controller="Admin" asp-action="Profile" class="sidebar-link">
+                    <i class="lni lni-smile"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a asp-controller="" asp-action="" class="sidebar-link">
+                <i class="lni lni-exit"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="main p-3">
+        <div class="text-start mx-5 my-5">
+            <h3
+                class="mb-5 fs-3 fw-bold main-font-color justify-content-center align-items-center d-flex text-uppercase">
+                Rekam Medis Pasien</h3>
+
+            <div class="my-3">
+                <form action="post">
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Identitas Diri</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <input type="text" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="Nama lengkap" required>
+                            </div>
+
+                            <div class="col-12 col-md-6 d-flex justify-content-end">
+                                <input type="number" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="Nomor Induk Kependudukan (NIK)" required>
+                            </div>
+
+                            <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
+                                <input type="text" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="Tempat lahir" required>
+                            </div>
+
+                            <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
+                                <input type="text" class="form-control rounded-5 custom-input" name="" id=""
+                                    onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Tanggal lahir"
+                                    required>
+                            </div>
+
+                            <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
+                                <input type="number" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="Umur" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Jenis Kelamin</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Gender" id" required>
+                                    <label class="form-check-label" for="Men">Laki-Laki</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Gender" id="">
+                                    <label class="form-check-label" for="Women">Perempuan</label>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                                            <select class="form-select rounded-5 custom-input" name="" id="Gender" aria-label="Default select example">
+                                                                <option selected disabled>Masukan jenis kelamin</option>
+                                                                <option>Laki-Laki</option>
+                                                                <option>Perempuan</option>
+                                                            </select>
+                                                        </div> -->
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Alamat</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <input type="text" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="Alamat lengkap" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Kontak Pribadi</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <input type="email" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="Email" required>
+                            </div>
+
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <input type="number" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="No WhatsApp" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Status & Pekerjaan</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <select class="form-select rounded-5 custom-input" name="" id="" required
+                                    aria-label="Default select example">
+                                    <option selected disabled>Status</option>
+                                    <option>Lajang</option>
+                                    <option>Menikah</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <input type="email" class="form-control rounded-5 custom-input" name="" id=""
+                                    placeholder="Pekerjaan" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Status Antrian</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                                <select class="form-select rounded-5 custom-input" name="" id="" required
+                                    aria-label="Default select example">
+                                    <option selected>Antri</option>
+                                    <option>Diterima</option>
+                                    <option>Ditolak</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Keluhan Sakit</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="">
+                                <textarea class="form-control rounded-4 custom-input no-resize" rows="5"
+                                    placeholder="Keluhan pasien" name="" id="" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-start">
+                            <h6 class="text-start fw-bold fs-5">Hasil Diagnosa</h6>
+                        </div>
+
+                        <div class="row input-container d-flex align-items-center mt-3">
+                            <div class="">
+                                <textarea class="form-control rounded-4 custom-input no-resize" rows="5"
+                                    placeholder="Hasil diagnosa dokter" name="" id="" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end mt-4">
+                        <a type="submit" asp-controller="Admin" asp-action="Dashboard"
+                            class="me-3 btn btn-danger rounded-5 shadow-lg text-white h-auto w-25">Back</a>
+
+                        <button type="submit"
+                            class="btn btn btn-primary rounded-5 border-0 shadow-lg w-25 h-auto custom-gradient-btn text-white">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
