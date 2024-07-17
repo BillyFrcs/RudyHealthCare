@@ -30,13 +30,13 @@
                 </button>
 
                 <div class="sidebar-logo">
-                    <a href="" class="text-uppercase">Gidion Farma</a>
+                    <a href="">Gidion Farma</a>
                 </div>
             </div>
 
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
+                    <a href="dashboard.html" class="sidebar-link">
                         <i class="lni lni-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -59,63 +59,23 @@
 
         <div class="main p-3">
             <div class="text-start mx-5">
-                <div>
-                    <h5 class="mb-0 fs-5 fw-bold main-font-color">Dashboard</h5>
+                <h5 class="mb-0 mt-5 fs-5 fw-bold main-font-color">Proses Antrian</h5>
 
-                    <div class="d-flex row justify-content-start my-3 gap-5">
-                        <div class="card rounded-4 border-0 second-background-color shadow-lg" style="width: 16rem;">
-                            <div class="card-body">
-                                <div class="d-flex mb-3 justify-content-start align-items-center">
-                                    <i class="fa-solid fa-user text-white fs-3"></i>
-                                    <h5 class="card-title text-white mx-3">Total <br /> Pasien</h5>
-                                </div>
+                <p class="lead fs-6 my-1">Daftar antrian pasien yang ingin konsultasi hari ini.</p>
 
-                                <h1 class="card-title text-white fw-bold fs-1">100</h1>
-                                <p class="lead fs-6 card-text text-white">Data diperbarui dari 7 hari terakhir.</p>
-                            </div>
-                        </div>
+                <div class="input-group">
+                    <form action="post" class="form-outline d-flex gap-3 my-3" data-mdb-input-init>
+                        <input type="search" id="search" name="search"
+                            class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien"
+                            required />
 
-                        <div class="card rounded-4 border-0 green-background-color shadow-lg" style="width: 16rem;">
-                            <div class="card-body">
-                                <div class="d-flex mb-3 justify-content-start align-items-center">
-                                    <i class="fa-solid fa-square-check text-white fs-3"></i>
-                                    <h5 class="card-title text-white mx-3">Total <br /> Pasien Selesai</h5>
-                                </div>
-
-                                <h1 class="card-title text-white fw-bold fs-1">100</h1>
-                                <p class="lead fs-6 card-text text-white">Data diperbarui dari 7 hari terakhir.</p>
-                            </div>
-                        </div>
-
-                        <div class="card rounded-4 border-0 pink-background-color shadow-lg" style="width: 16rem;">
-                            <div class="card-body">
-                                <div class="d-flex mb-3 justify-content-start align-items-center">
-                                    <i class="fa-solid fa-xmark text-white fs-3"></i>
-                                    <h5 class="card-title text-white mx-3">Total <br /> Pasien Batal</h5>
-                                </div>
-
-                                <h1 class="card-title text-white fw-bold fs-1">0</h1>
-                                <p class="lead fs-6 card-text text-white">Data diperbarui dari 7 hari terakhir.</p>
-                            </div>
-                        </div>
-                    </div>
+                        <button type="submit" class="btn btn-primary main-background-color shadow-lg">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </div>
 
-                <div>
-                    <h5 class="mb-0 mt-5 fs-5 fw-bold main-font-color">Rekap Pasien</h5>
-
-                    <div class="input-group">
-                        <form action="post" class="form-outline d-flex gap-3 my-3" data-mdb-input-init>
-                            <input type="search" id="search" name="search"
-                                class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien"
-                                required />
-
-                            <button type="submit" class="btn btn-primary main-background-color shadow-lg">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
+                <div class="my-3">
                     <table class="table table-striped my-3">
                         <thead>
                             <tr>
@@ -135,7 +95,7 @@
                                 <td>Billy</td>
                                 <td>081226543876</td>
                                 <td>19/08/2024</td>
-                                <td><span class="badge green-background-color">Diterima</span></td>
+                                <td><span class="badge bg-warning">Antri</span></td>
                                 <td>
                                     <a href="" class="text-decoration-none"><i
                                             class="fa-solid fa-pen-to-square fs-4"></i></a>
@@ -153,7 +113,7 @@
                                 <td>Billy</td>
                                 <td>081226543876</td>
                                 <td>19/08/2024</td>
-                                <td><span class="badge green-background-color">Diterima</span></td>
+                                <td><span class="badge bg-warning">Antri</span></td>
                                 <td>
                                     <a href="" class="text-decoration-none"><i
                                             class="fa-solid fa-pen-to-square fs-4"></i></a>
@@ -171,7 +131,7 @@
                                 <td>Billy</td>
                                 <td>081226543876</td>
                                 <td>19/08/2024</td>
-                                <td><span class="badge pink-background-color">Ditolak</span></td>
+                                <td><span class="badge bg-warning">Antri</span></td>
                                 <td>
                                     <a href="" class="text-decoration-none"><i
                                             class="fa-solid fa-pen-to-square fs-4"></i></a>
@@ -207,7 +167,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </table>
 
                     <div aria-label="Page navigation example" class="my-4">
@@ -216,7 +175,7 @@
                                 <a class="page-link">Previous</a>
                             </li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item "><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
                                 <a class="page-link" href="#">Next</a>
@@ -226,14 +185,15 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-            </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
-        <script src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 
-        <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
 </body>
 
