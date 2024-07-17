@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <section class="wrapper">
         <aside id="sidebar" class="rounded-end-4">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
@@ -47,6 +47,12 @@
                         <span>Antrian</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="profile.html" class="sidebar-link">
+                        <i class="lni lni-smile"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
             </ul>
 
             <div class="sidebar-footer">
@@ -58,7 +64,7 @@
         </aside>
 
         <div class="main p-3">
-            <div class="text-start mx-5">
+            <div class="text-start mx-5 my-5">
                 <div>
                     <h5 class="mb-0 fs-5 fw-bold main-font-color">Dashboard</h5>
 
@@ -67,11 +73,23 @@
                             <div class="card-body">
                                 <div class="d-flex mb-3 justify-content-start align-items-center">
                                     <i class="fa-solid fa-user text-white fs-3"></i>
-                                    <h5 class="card-title text-white mx-3">Total <br /> Pasien</h5>
+                                    <h6 class="card-title text-white mx-3">Total <br /> Pasien</h6>
                                 </div>
 
                                 <h1 class="card-title text-white fw-bold fs-1">100</h1>
-                                <p class="lead fs-6 card-text text-white">Data diperbarui dari 7 hari terakhir.</p>
+                                <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
+                            </div>
+                        </div>
+
+                        <div class="card rounded-4 border-0 bg-warning shadow-lg" style="width: 16rem;">
+                            <div class="card-body">
+                                <div class="d-flex mb-3 justify-content-start align-items-center">
+                                    <i class="fa-solid fa-boxes-stacked text-white fs-3"></i>
+                                    <h6 class="card-title text-white mx-3">Total <br /> Pasien Antri</h6>
+                                </div>
+
+                                <h1 class="card-title text-white fw-bold fs-1">10</h1>
+                                <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
                             </div>
                         </div>
 
@@ -79,11 +97,11 @@
                             <div class="card-body">
                                 <div class="d-flex mb-3 justify-content-start align-items-center">
                                     <i class="fa-solid fa-square-check text-white fs-3"></i>
-                                    <h5 class="card-title text-white mx-3">Total <br /> Pasien Selesai</h5>
+                                    <h6 class="card-title text-white mx-3">Total <br /> Pasien Diterima</h6>
                                 </div>
 
-                                <h1 class="card-title text-white fw-bold fs-1">100</h1>
-                                <p class="lead fs-6 card-text text-white">Data diperbarui dari 7 hari terakhir.</p>
+                                <h1 class="card-title text-white fw-bold fs-1">80</h1>
+                                <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
                             </div>
                         </div>
 
@@ -91,11 +109,11 @@
                             <div class="card-body">
                                 <div class="d-flex mb-3 justify-content-start align-items-center">
                                     <i class="fa-solid fa-xmark text-white fs-3"></i>
-                                    <h5 class="card-title text-white mx-3">Total <br /> Pasien Batal</h5>
+                                    <h6 class="card-title text-white mx-3">Total <br /> Pasien Ditolak</h6>
                                 </div>
 
-                                <h1 class="card-title text-white fw-bold fs-1">0</h1>
-                                <p class="lead fs-6 card-text text-white">Data diperbarui dari 7 hari terakhir.</p>
+                                <h1 class="card-title text-white fw-bold fs-1">10</h1>
+                                <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
                             </div>
                         </div>
                     </div>
@@ -226,14 +244,15 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-            </script>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
 
-        <script src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 
-        <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
 </body>
 
