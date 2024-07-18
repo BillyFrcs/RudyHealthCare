@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RudyHealthCare.Models.Patients
 {
-    public class RegistrationForms
+    public class RegistrationFormsModel
     {
         [Key]
         public int PatientID { get; set; }

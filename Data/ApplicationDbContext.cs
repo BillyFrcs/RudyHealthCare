@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 using RudyHealthCare.Models.Patients;
+using RudyHealthCare.Models.Admin;
 
 namespace RudyHealthCare.Data
 {
@@ -14,6 +15,7 @@ namespace RudyHealthCare.Data
         {
         }
 
-        public DbSet<RegistrationForms> Patients { get; set; }
+        public DbSet<RegistrationFormsModel> Patients { get; set; }
+        public DbSet<AdminModel> Admin { get; set; }
     }
 }
