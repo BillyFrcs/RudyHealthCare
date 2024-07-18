@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using RudyHealthCare.Models;
 
-namespace RudyHealthCare.Controllers.User;
+namespace RudyHealthCare.Controllers.Patients;
 
 [Route("[controller]")]
 public class RegistrationFormsController : Controller
@@ -14,10 +14,10 @@ public class RegistrationFormsController : Controller
         _logger = logger;
     }
 
-    [Route("/User/RegistrationForms")]
+    [Route("/Patients/RegistrationForms")]
     public IActionResult RegistrationForms()
     {
-        return View("Views/User/RegistrationForms.cshtml");
+        return View("Views/Patients/RegistrationForms.cshtml");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
