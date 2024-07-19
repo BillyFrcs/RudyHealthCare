@@ -10,7 +10,7 @@ namespace RudyHealthCare.Models.Patients
     public class RegistrationFormsModel
     {
         [Key]
-        public int PatientID { get; set; }
+        public int PatientId { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string? QueueNumber { get; set; }
@@ -21,6 +21,9 @@ namespace RudyHealthCare.Models.Patients
 
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime DateOfRegistration { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime TimeOfRegistration { get; set; }

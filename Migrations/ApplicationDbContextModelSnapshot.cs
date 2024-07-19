@@ -24,11 +24,11 @@ namespace RudyHealthCare.Migrations
 
             modelBuilder.Entity("RudyHealthCare.Models.Admin.AdminModel", b =>
                 {
-                    b.Property<int>("AdminID")
+                    b.Property<int>("AdminId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminId"));
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -39,18 +39,18 @@ namespace RudyHealthCare.Migrations
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AdminID");
+                    b.HasKey("AdminId");
 
                     b.ToTable("Admin");
                 });
 
             modelBuilder.Entity("RudyHealthCare.Models.Patients.RegistrationFormsModel", b =>
                 {
-                    b.Property<int>("PatientID")
+                    b.Property<int>("PatientId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PatientID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PatientId"));
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -62,6 +62,9 @@ namespace RudyHealthCare.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfRegistration")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DiagnoseResult")
@@ -101,7 +104,7 @@ namespace RudyHealthCare.Migrations
                     b.Property<string>("WhatsAppNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PatientID");
+                    b.HasKey("PatientId");
 
                     b.ToTable("Patients");
                 });
