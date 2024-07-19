@@ -1,21 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace RudyHealthCare.Models.Patients
+namespace RudyHealthCare.ViewModels
 {
-    public class RegistrationFormsModel
+    public class RegistrationFormsViewModel
     {
-        [Key]
-        public string? PatientId { get; set; }
-
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string? QueueNumber { get; set; }
-
         [Required]
         public string? Name { get; set; }
 
@@ -26,12 +19,7 @@ namespace RudyHealthCare.Models.Patients
         public string? PlaceOfBirth { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-
-        [Required]
-        [DataType(DataType.Date)]
-        public DateTime DateOfRegistration { get; set; }
 
         [Required]
         public string? Age { get; set; }
@@ -55,12 +43,36 @@ namespace RudyHealthCare.Models.Patients
         public string? Profession { get; set; }
 
         [Required]
-        public string? QueueStatus { get; set; }
-
-        [Required]
         public string? ComplaintsOfPain { get; set; }
+        
+        [Required]
+        public string? PatientId 
+        { 
+            get => Guid.NewGuid().ToString("N");
+        }
 
         [Required]
-        public string? DiagnoseResult { get; set; }
+        public string? QueueNumber
+        {
+            get => "A001";
+        }
+
+        [Required]
+        public string? QueueStatus 
+        {
+            get => "Antri";
+        }
+
+        [Required]
+        public string? DiagnoseResult 
+        {
+            get => "Belum ada hasil diagnosa dari dokter.";
+        }
+
+        [Required]
+        public DateTime DateOfRegistration 
+        {
+            get => DateTime.Now;
+        }
     }
 }

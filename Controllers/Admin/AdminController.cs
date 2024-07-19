@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 
 namespace RudyHealthCare.Controllers.Admin
 {
-    [Route("[controller]")]
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;

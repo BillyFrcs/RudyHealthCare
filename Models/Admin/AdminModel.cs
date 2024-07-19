@@ -10,10 +10,18 @@ namespace RudyHealthCare.Models.Admin
     public class AdminModel
     {
         [Key]
-        public int AdminId { get; set; }
+        public string? AdminId { get; set; }
 
+        [Required]
+        public string? Username { get; set; }
+
+        [Required]
         public string? Email { get; set; }
+
+        [Required]
         public string? Password { get; set; }
+
+        [Required]
         public string? Role { get; set; }
     }
 }
