@@ -26,10 +26,4 @@
       <PackageReference Include="Microsoft.SqlServer.Server" Version="1.0.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers\Admin\" />
-      <Folder Include="Models\Admin\" />
-      <Folder Include="Models\User\" />
-    </ItemGroup>
-
 </Project>
