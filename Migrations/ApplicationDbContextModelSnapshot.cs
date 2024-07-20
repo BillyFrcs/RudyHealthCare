@@ -57,9 +57,8 @@ namespace RudyHealthCare.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Age")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("ComplaintsOfPain")
                         .IsRequired()
@@ -101,7 +100,6 @@ namespace RudyHealthCare.Migrations
 
                     b.Property<string>("QueueNumber")
                         .IsRequired()
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QueueStatus")

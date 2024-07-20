@@ -1,12 +1,16 @@
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
 
 using RudyHealthCare.Data;
 using RudyHealthCare.Repositories.Patients;
+using RudyHealthCare.Models.Patients;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// builder.Services.AddMvc();
 
 if (builder.Environment.IsDevelopment())
 {

@@ -13,7 +13,6 @@ namespace RudyHealthCare.Models.Patients
         public string? PatientId { get; set; }
 
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string? QueueNumber { get; set; }
 
         [Required]
@@ -34,7 +33,7 @@ namespace RudyHealthCare.Models.Patients
         public DateTime DateOfRegistration { get; set; }
 
         [Required]
-        public string? Age { get; set; }
+        public int Age { get; set; }
 
         [Required]
         public string? Gender { get; set; }

@@ -27,10 +27,12 @@ public class RegistrationFormsController : Controller
     }
     */
 
+    /*
     public IActionResult Index()
     {
         return RedirectToAction("Index", "Home");
     }
+    */
 
     [Route("/Patients/RegistrationForms")]
     public IActionResult RegistrationForms()
@@ -68,10 +70,14 @@ public class RegistrationFormsController : Controller
 
             await _patientsRepository.AddAsync(patients);
 
-            return RedirectToAction(nameof(Index));
+            return Json(new { success = true });
+
+            // return RedirectToAction(nameof(Index));
         }
 
-        return View(registrationFormsViewModel);
+        // return View(registrationFormsViewModel);
+
+        return Json(new { success = false, errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
     }
 
     /*

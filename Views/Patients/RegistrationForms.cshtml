@@ -17,7 +17,7 @@
 
 <section class="registration-form-section">
     <div class="container my-5">
-        <form asp-action="RegistrationForms">
+        <form id="RegistrationForms" asp-controller="RegistrationForms" asp-action="RegistrationForms" method="post">
             <div class="justify-content-center">
                 <h1 class="text-center text-uppercase main-font-color fw-bold">Pendaftaran</h1>
             </div>
@@ -29,29 +29,48 @@
 
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                        <input type="text" asp-for="Name" class="form-control rounded-5 custom-input"
-                            placeholder="Masukan nama lengkap" required>
+                        <div class="col-12 col-md-12">
+                            <input type="text" asp-for="Name" class="form-control rounded-5 custom-input"
+                                placeholder="Masukan nama lengkap">
+
+                            <span asp-validation-for="Name" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
 
                     <div class="col-12 col-md-6 d-flex justify-content-end">
-                        <input type="number" asp-for="IdentityNumber" class="form-control rounded-5 custom-input"
-                            placeholder="Nomor Induk Kependudukan (NIK)" required>
+                        <div class="col-12 col-md-12">
+                            <input type="number" asp-for="IdentityNumber" class="form-control rounded-5 custom-input"
+                                placeholder="Nomor Induk Kependudukan (NIK)">
+
+                            <span asp-validation-for="IdentityNumber" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
 
                     <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
-                        <input type="text" asp-for="PlaceOfBirth" class="form-control rounded-5 custom-input"
-                            placeholder="Tempat lahir" required>
+                        <div class="col-12 col-md-12">
+                            <input type="text" asp-for="PlaceOfBirth" class="form-control rounded-5 custom-input"
+                                placeholder="Tempat lahir">
+
+                            <span asp-validation-for="PlaceOfBirth" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
 
                     <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
-                        <input type="text" asp-for="DateOfBirth" class="form-control rounded-5 custom-input"
-                            onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Tanggal lahir"
-                            required>
+                        <div class="col-12 col-md-12">
+                            <input type="text" asp-for="DateOfBirth" class="form-control rounded-5 custom-input"
+                                onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Tanggal lahir">
+
+                            <span asp-validation-for="DateOfBirth" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
 
                     <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
-                        <input type="number" asp-for="Age" class="form-control rounded-5 custom-input"
-                            placeholder="Umur" required>
+                        <div class="col-12 col-md-12">
+                            <input type="number" asp-for="Age" class="form-control rounded-5 custom-input" min="1"
+                                placeholder="Umur">
+
+                            <span asp-validation-for="Age" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,14 +82,18 @@
 
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" asp-for="Gender" value="Laki-Laki" required>
-                            <label class="form-check-label" for="Laki-Laki">Laki-Laki</label>
-                        </div>
+                        <div class="col-12 col-md-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" asp-for="Gender" value="Laki-Laki">
+                                <label class="form-check-label" for="Laki-Laki">Laki-Laki</label>
+                            </div>
 
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" asp-for="Gender" value="Perempuan">
-                            <label class="form-check-label" for="Perempuan">Perempuan</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" asp-for="Gender" value="Perempuan">
+                                <label class="form-check-label" for="Perempuan">Perempuan</label>
+                            </div>
+
+                            <span asp-validation-for="Gender" class="lead fw-light text-danger fs-6"></span>
                         </div>
                     </div>
                 </div>
@@ -83,8 +106,12 @@
 
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                        <input type="text" asp-for="Address" class="form-control rounded-5 custom-input"
-                            placeholder="Alamat lengkap" required>
+                        <div class="col-12 col-md-12">
+                            <input type="text" asp-for="Address" class="form-control rounded-5 custom-input"
+                                placeholder="Alamat lengkap">
+
+                            <span asp-validation-for="Address" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,13 +123,21 @@
 
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                        <input type="email" asp-for="Email" class="form-control rounded-5 custom-input"
-                            placeholder="Masukan email" required>
+                        <div class="col-12 col-md-12">
+                            <input type="email" asp-for="Email" class="form-control rounded-5 custom-input"
+                                placeholder="Masukan email">
+
+                            <span asp-validation-for="Email" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
 
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                        <input type="number" asp-for="WhatsAppNumber" class="form-control rounded-5 custom-input"
-                            placeholder="Masukan no WhatsApp" required>
+                        <div class="col-12 col-md-12">
+                            <input type="number" asp-for="WhatsAppNumber" class="form-control rounded-5 custom-input"
+                                placeholder="Masukan no WhatsApp">
+
+                            <span asp-validation-for="WhatsAppNumber" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -114,17 +149,25 @@
 
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                        <select asp-for="Status" class="form-select rounded-5 custom-input"
-                            aria-label="Default select example" required>
-                            <option selected disabled>Masukan status</option>
-                            <option>Lajang</option>
-                            <option>Menikah</option>
-                        </select>
+                        <div class="col-12 col-md-12">
+                            <select asp-for="Status" class="form-select rounded-5 custom-input"
+                                aria-label="Default select example">
+                                <option selected disabled>Masukan status</option>
+                                <option>Lajang</option>
+                                <option>Menikah</option>
+                            </select>
+
+                            <span asp-validation-for="Status" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
 
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                        <input type="text" asp-for="Profession" class="form-control rounded-5 custom-input"
-                            placeholder="Masukan pekerjaan" required>
+                        <div class="col-12 col-md-12">
+                            <input type="text" asp-for="Profession" class="form-control rounded-5 custom-input"
+                                placeholder="Masukan pekerjaan">
+
+                            <span asp-validation-for="Profession" class="lead fw-light text-danger fs-6"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,7 +180,9 @@
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="">
                         <textarea asp-for="ComplaintsOfPain" class="form-control rounded-4 custom-input no-resize"
-                            rows="5" placeholder="Masukan keluhan anda" required></textarea>
+                            rows="5" placeholder="Masukan keluhan anda"></textarea>
+
+                        <span asp-validation-for="ComplaintsOfPain" class="lead fw-light text-danger fs-6"></span>
                     </div>
                 </div>
             </div>
@@ -150,5 +195,34 @@
                     class="btn btn btn-primary rounded-5 border-0 shadow-lg w-25 h-auto custom-gradient-btn text-white">Submit</button>
             </div>
         </form>
+
+        <div class="modal fade" id="SuccessConfirmation" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="SuccessConfirmationLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Pendaftaran Berhasil!</h1>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Silahkan cek WhatsApp anda untuk melihat nomor antrian anda, Terima kasih!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary shadow-lg text-white" id="CloseModal"
+                            data-bs-dismiss="modal">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+<script src="~/js/script.js"></script>
+}
