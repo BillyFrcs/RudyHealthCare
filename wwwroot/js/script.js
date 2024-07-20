@@ -14,7 +14,6 @@ $(document).ready(function () {
                     form[0].reset();
                 },
                 error: function (xhr, status, error) {
-                    // Handle the error
                     console.log(error);
                 }
             });
