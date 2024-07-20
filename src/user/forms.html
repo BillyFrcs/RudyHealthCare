@@ -31,7 +31,7 @@
 
     <section class="registration-form-section">
         <div class="container my-5">
-            <form action="post">
+            <form class="" action="post">
                 <div class="justify-content-center">
                     <h1 class="text-center text-uppercase main-font-color fw-bold">Pendaftaran</h1>
                 </div>
@@ -41,33 +41,47 @@
                         <h6 class="text-start fw-bold fs-5">Identitas Diri</h6>
                     </div>
 
-                    <div class="row input-container d-flex align-items-center mt-3">
-                        <!-- <p class="lead text-start fw-normal fs-6">Nama Lengkap</p> -->
-
+                    <div class="row input-container d-flex mt-3">
                         <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <input type="text" class="form-control rounded-5 custom-input" name="PatientName"
-                                id="PatientName" placeholder="Masukan nama lengkap" required>
+                            <div class="col-12 col-md-12">
+                                <input type="text" class="form-control rounded-5 custom-input" name="PatientName"
+                                    id="PatientName" placeholder="Masukan nama lengkap" required>
+
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
 
-                        <div class="col-12 col-md-6 d-flex justify-content-end">
-                            <input type="number" class="form-control rounded-5 custom-input" name="NIK" id="NIK"
-                                placeholder="Nomor Induk Kependudukan (NIK)" required>
+                        <div class="col-12 col-md-6 d-flex justify-content-start">
+                            <div class="col-12 col-md-12">
+                                <input type="number" class="form-control rounded-5 custom-input" name="NIK" id="NIK"
+                                    placeholder="Nomor Induk Kependudukan (NIK)" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex justify-content-start mt-3">
+                            <div class="col-12 col-md-12">
+                                <input type="text" class="form-control rounded-5 custom-input" name="PlaceOfBirth"
+                                    id="PlaceOfBirth" placeholder="Tempat lahir" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
-                            <input type="text" class="form-control rounded-5 custom-input" name="PlaceOfBirth"
-                                id="PlaceOfBirth" placeholder="Tempat lahir" required>
+                            <div class="col-12 col-md-12">
+                                <input type="text" class="form-control rounded-5 custom-input" name="RegistrationDate"
+                                    id="RegistrationDate" onfocus="(this.type='date')" onblur="(this.type='text')"
+                                    placeholder="Tanggal lahir" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
 
-                        <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
-                            <input type="text" class="form-control rounded-5 custom-input" name="RegistrationDate"
-                                id="RegistrationDate" onfocus="(this.type='date')" onblur="(this.type='text')"
-                                placeholder="Tanggal lahir" required>
-                        </div>
-
-                        <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
-                            <input type="number" class="form-control rounded-5 custom-input" name="Age" id="Age"
-                                placeholder="Umur" required>
+                        <div class="col-12 col-md-6 d-flex justify-content-start mt-3">
+                            <div class="col-12 col-md-12">
+                                <input type="number" class="form-control rounded-5 custom-input" name="Age" id="Age"
+                                    placeholder="Umur" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,24 +93,20 @@
 
                     <div class="row input-container d-flex align-items-center mt-3">
                         <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="Gender" id="Men" required>
-                                <label class="form-check-label" for="Men">Laki-Laki</label>
-                            </div>
+                            <div class="col-12 col-md-12">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Gender" id="Men" required>
+                                    <label class="form-check-label" for="Men">Laki-Laki</label>
+                                </div>
 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="Gender" id="Women">
-                                <label class="form-check-label" for="Women">Perempuan</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Gender" id="Women">
+                                    <label class="form-check-label" for="Women">Perempuan</label>
+                                </div>
+
+                                <span class="lead text-danger fw-light fs-6">Error</span>
                             </div>
                         </div>
-
-                        <!-- <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <select class="form-select rounded-5 custom-input" name="" id="Gender" aria-label="Default select example">
-                                <option selected disabled>Masukan jenis kelamin</option>
-                                <option>Laki-Laki</option>
-                                <option>Perempuan</option>
-                            </select>
-                        </div> -->
                     </div>
                 </div>
 
@@ -107,8 +117,11 @@
 
                     <div class="row input-container d-flex align-items-center mt-3">
                         <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <input type="text" class="form-control rounded-5 custom-input" name="Address" id="Address"
-                                placeholder="Alamat lengkap" required>
+                            <div class="col-12 col-md-12">
+                                <input type="text" class="form-control rounded-5 custom-input" name="Address"
+                                    id="Address" placeholder="Alamat lengkap" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,13 +133,19 @@
 
                     <div class="row input-container d-flex align-items-center mt-3">
                         <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <input type="email" class="form-control rounded-5 custom-input" name="Email" id="Email"
-                                placeholder="Masukan email" required>
+                            <div class="col-12 col-md-12">
+                                <input type="email" class="form-control rounded-5 custom-input" name="Email" id="Email"
+                                    placeholder="Masukan email" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <input type="number" class="form-control rounded-5 custom-input" name="WhatsAppNumber"
-                                id="WhatsAppNumber" placeholder="Masukan no WhatsApp" required>
+                            <div class="col-12 col-md-12">
+                                <input type="number" class="form-control rounded-5 custom-input" name="WhatsAppNumber"
+                                    id="WhatsAppNumber" placeholder="Masukan no WhatsApp" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -138,17 +157,24 @@
 
                     <div class="row input-container d-flex align-items-center mt-3">
                         <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <select class="form-select rounded-5 custom-input" name="Status" id="Status" required
-                                aria-label="Default select example">
-                                <option selected disabled>Masukan status</option>
-                                <option>Lajang</option>
-                                <option>Menikah</option>
-                            </select>
+                            <div class="col-12 col-md-12">
+                                <select class="form-select rounded-5 custom-input" name="Status" id="Status" required
+                                    aria-label="Default select example">
+                                    <option selected disabled>Masukan status</option>
+                                    <option>Lajang</option>
+                                    <option>Menikah</option>
+                                </select>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
-                            <input type="email" class="form-control rounded-5 custom-input" name="Job" id="Job"
-                                placeholder="Masukan pekerjaan" required>
+                            <div class="col-12 col-md-12">
+                                <input type="email" class="form-control rounded-5 custom-input" name="Job" id="Job"
+                                    placeholder="Masukan pekerjaan" required>
+                                <span class="lead text-danger fw-light fs-6">Error</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,14 +189,17 @@
                             <textarea class="form-control rounded-4 custom-input no-resize" rows="5"
                                 placeholder="Masukan keluhan anda" name="ComplaintsOfPain" id="ComplaintsOfPain"
                                 required></textarea>
+                            <span class="lead text-danger fw-light fs-6">Error</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-end mt-4">
-                    <a type="submit" href="../../index.html" class="me-3 btn btn-danger rounded-5 shadow-lg text-white h-auto w-25">Batal</a>
+                    <a type="submit" href="../../index.html"
+                        class="me-3 btn btn-danger rounded-5 shadow-lg text-white h-auto w-25">Batal</a>
 
-                    <button type="submit" class="btn btn btn-primary rounded-5 border-0 shadow-lg w-25 h-auto custom-gradient-btn text-white">Submit</button>
+                    <button type="submit"
+                        class="btn btn btn-primary rounded-5 border-0 shadow-lg w-25 h-auto custom-gradient-btn text-white">Submit</button>
                 </div>
             </form>
         </div>
