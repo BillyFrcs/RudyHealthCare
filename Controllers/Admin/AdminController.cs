@@ -6,16 +6,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
+using RudyHealthCare.Repositories.Patients;
+using RudyHealthCare.Blueprints;
+
 namespace RudyHealthCare.Controllers.Admin
 {
     public class AdminController : Controller
     {
+        private readonly IPatientsRepository _repository;
+
+        public AdminController(IPatientsRepository repository)
+        {
+            _repository = repository;
+        }
+
+        /*
         private readonly ILogger<AdminController> _logger;
 
         public AdminController(ILogger<AdminController> logger)
         {
             _logger = logger;
         }
+        */
 
         [Route("/Admin/Login")]
         public IActionResult Login()
@@ -24,8 +36,22 @@ namespace RudyHealthCare.Controllers.Admin
         }
 
         [Route("/Admin/Dashboard")]
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
+            var patientsData = await _repository.GetAllAsync();
+            var totalCount = await _repository.GetTotalCountAsync();
+
+            var patientsHelperBlueprint = new PatientsHelperBlueprint
+            {
+                Patients = patientsData,
+                TotalCount = totalCount
+            };
+
+            if (patientsData != null)
+            {
+                return View("Views/Admin/Dashboard.cshtml", patientsHelperBlueprint);
+            } 
+
             return View("Views/Admin/Dashboard.cshtml");
         }
 

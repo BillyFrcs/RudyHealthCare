@@ -48,7 +48,7 @@ namespace RudyHealthCare.Migrations
                     b.ToTable("Admin");
                 });
 
-            modelBuilder.Entity("RudyHealthCare.Models.Patients.RegistrationFormsModel", b =>
+            modelBuilder.Entity("RudyHealthCare.Models.Patients.PatientsModel", b =>
                 {
                     b.Property<string>("PatientId")
                         .HasColumnType("nvarchar(450)");

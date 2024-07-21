@@ -15,7 +15,7 @@ namespace RudyHealthCare.Data
         {
         }
 
-        public DbSet<RegistrationFormsModel> Patients { get; set; }
+        public DbSet<PatientsModel> Patients { get; set; }
         public DbSet<AdminModel> Admin { get; set; }
     }
 }

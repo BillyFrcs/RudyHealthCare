@@ -1,7 +1,15 @@
 @{
     ViewBag.Title = "Dashboard | Admin";
     Layout = "_Layout";
+
+    var totalCount = ViewData["TotalCount"];
+
+    var index = 1;
 }
+
+@model RudyHealthCare.Blueprints.PatientsHelperBlueprint
+
+@* @model IEnumerable<RudyHealthCare.Models.Patients.PatientsModel> *@
 
 <section class="wrapper">
     <aside id="sidebar" class="rounded-end-4">
@@ -57,7 +65,7 @@
                                 <h6 class="card-title text-white mx-3">Total <br /> Pasien</h6>
                             </div>
 
-                            <h1 class="card-title text-white fw-bold fs-1">100</h1>
+                            <h1 class="card-title text-white fw-bold fs-1">@Model.TotalCount</h1>
                             <p class="lead fs-6 card-text text-white">Data akan diperbarui setiap saat.</p>
                         </div>
                     </div>
@@ -122,65 +130,47 @@
                             <th scope="col">Antrian</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Kontak</th>
-                            <th scope="col">Tanggal</th>
+                            <th scope="col">Tanggal Registrasi</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>A001</td>
-                            <td>Billy</td>
-                            <td>081226543876</td>
-                            <td>19/08/2024</td>
-                            <td><span class="badge green-background-color">Diterima</span></td>
-                            <td>
-                                <a asp-controller="Admin" asp-action="MedicalRecords" class="text-decoration-none"><i
-                                        class="fa-solid fa-pen-to-square fs-4"></i></a>
+                        @foreach (var item in Model.Patients)
+                        {
+                            <tr>
+                                <th scope="row">@index</th>
+                                <td>@item.QueueNumber</td>
+                                <td>@item.Name</td>
+                                <td>@item.WhatsAppNumber</td>
+                                <td>@item.DateOfRegistration</td>
+                                <td>
+                                    <span class="badge 
+                                        @if (item.QueueStatus == "Antri") {
+                                            <text>bg-warning</text>
+                                        }
+                                        else if (item.QueueStatus == "Diterima") {
+                                            <text>green-background-color</text>
+                                        }
+                                        else if (item.QueueStatus == "Ditolak") {
+                                            <text>pink-background-color</text>
+                                        }">
+                                        @item.QueueStatus
+                                    </span>
+                                </td>
+                                <td>
+                                    <a asp-controller="Admin" asp-action="MedicalRecords" class="text-decoration-none"><i
+                                            class="fa-solid fa-pen-to-square fs-4"></i></a>
 
-                                <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteConfirmation">
-                                    <i class="fa-solid fa-trash fs-4"></i>
-                                </button>
-                            </td>
-                        </tr>
+                                    <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
+                                        data-bs-target="#DeleteConfirmation">
+                                        <i class="fa-solid fa-trash fs-4"></i>
+                                    </button>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>A002</td>
-                            <td>Billy</td>
-                            <td>081226543876</td>
-                            <td>19/08/2024</td>
-                            <td><span class="badge green-background-color">Diterima</span></td>
-                            <td>
-                                <a href="" class="text-decoration-none"><i
-                                        class="fa-solid fa-pen-to-square fs-4"></i></a>
-
-                                <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteConfirmation">
-                                    <i class="fa-solid fa-trash fs-4"></i>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>A003</td>
-                            <td>Billy</td>
-                            <td>081226543876</td>
-                            <td>19/08/2024</td>
-                            <td><span class="badge pink-background-color">Ditolak</span></td>
-                            <td>
-                                <a href="" class="text-decoration-none"><i
-                                        class="fa-solid fa-pen-to-square fs-4"></i></a>
-
-                                <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteConfirmation">
-                                    <i class="fa-solid fa-trash fs-4"></i>
-                                </button>
-                            </td>
-                        </tr>
+                            index++;
+                        }
                     </tbody>
 
                     <div class="modal fade" id="DeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false"

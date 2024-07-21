@@ -17,12 +17,17 @@ namespace RudyHealthCare.Repositories.Patients
             _context = context;
         }
 
-        public async Task<IEnumerable<RegistrationFormsModel>> GetAllAsync()
+        public async Task<int> GetTotalCountAsync()
+        {
+            return await _context.Patients.CountAsync();
+        }
+
+        public async Task<IEnumerable<PatientsModel>> GetAllAsync()
         {
             return await _context.Patients.ToListAsync();
         }
 
-        public async Task AddAsync(RegistrationFormsModel patients)
+        public async Task AddAsync(PatientsModel patients)
         {
             _context.Patients.Add(patients);
 

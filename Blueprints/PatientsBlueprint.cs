@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using RudyHealthCare.Models.Patients;
 
 namespace RudyHealthCare.Blueprints
 {
-    public class RegistrationFormsBlueprint
+    public class PatientsBlueprint
     {
         [Required(ErrorMessage = "Nama tidak boleh kosong")]
         public string? Name { get; set; }

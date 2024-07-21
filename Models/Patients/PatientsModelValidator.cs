@@ -6,7 +6,7 @@ using FluentValidation;
 
 namespace RudyHealthCare.Models.Patients
 {
-    public class PatientsModelValidator : AbstractValidator<RegistrationFormsModel>
+    public class PatientsModelValidator : AbstractValidator<PatientsModel>
     {
         public PatientsModelValidator()
         {

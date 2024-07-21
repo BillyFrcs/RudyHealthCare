@@ -8,7 +8,8 @@ namespace RudyHealthCare.Repositories.Patients
 {
     public interface IPatientsRepository
     {
-        Task<IEnumerable<RegistrationFormsModel>> GetAllAsync();
-        Task AddAsync(RegistrationFormsModel patient);
+        public Task<int> GetTotalCountAsync();
+        public Task<IEnumerable<PatientsModel>> GetAllAsync();
+        public Task AddAsync(PatientsModel patients);
     }
 }
