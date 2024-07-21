@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RudyHealthCare.ViewModels
+namespace RudyHealthCare.Blueprints
 {
-    public class RegistrationFormsViewModel
+    public class RegistrationFormsBlueprint
     {
         [Required(ErrorMessage = "Nama tidak boleh kosong")]
         public string? Name { get; set; }

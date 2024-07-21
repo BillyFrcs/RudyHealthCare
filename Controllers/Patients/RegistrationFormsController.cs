@@ -1,11 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-
+using RudyHealthCare.Blueprints;
 using RudyHealthCare.Data;
 using RudyHealthCare.Models;
 using RudyHealthCare.Models.Patients;
 using RudyHealthCare.Repositories.Patients;
-using RudyHealthCare.ViewModels;
 
 namespace RudyHealthCare.Controllers.Patients;
 
@@ -43,29 +42,29 @@ public class RegistrationFormsController : Controller
     [HttpPost]
     [Route("/Patients/RegistrationForms")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> RegistrationForms(RegistrationFormsViewModel registrationFormsViewModel)
+    public async Task<IActionResult> RegistrationForms(RegistrationFormsBlueprint registrationFormsBlueprint)
     {
         if (ModelState.IsValid)
         {
             var patients = new RegistrationFormsModel
             {
-                PatientId = registrationFormsViewModel.PatientId,
-                QueueNumber = registrationFormsViewModel.QueueNumber,
-                Name = registrationFormsViewModel.Name,
-                IdentityNumber = registrationFormsViewModel.IdentityNumber,
-                PlaceOfBirth = registrationFormsViewModel.PlaceOfBirth,
-                DateOfBirth = registrationFormsViewModel.DateOfBirth,
-                DateOfRegistration = registrationFormsViewModel.DateOfRegistration,
-                Age = registrationFormsViewModel.Age,
-                Gender = registrationFormsViewModel.Gender,
-                Address = registrationFormsViewModel.Address,
-                Email = registrationFormsViewModel.Email,
-                WhatsAppNumber = registrationFormsViewModel.WhatsAppNumber,
-                Status = registrationFormsViewModel.Status,
-                Profession = registrationFormsViewModel.Profession,
-                QueueStatus = registrationFormsViewModel.QueueStatus,
-                ComplaintsOfPain = registrationFormsViewModel.ComplaintsOfPain,
-                DiagnoseResult = registrationFormsViewModel.DiagnoseResult
+                PatientId = registrationFormsBlueprint.PatientId,
+                QueueNumber = registrationFormsBlueprint.QueueNumber,
+                Name = registrationFormsBlueprint.Name,
+                IdentityNumber = registrationFormsBlueprint.IdentityNumber,
+                PlaceOfBirth = registrationFormsBlueprint.PlaceOfBirth,
+                DateOfBirth = registrationFormsBlueprint.DateOfBirth,
+                DateOfRegistration = registrationFormsBlueprint.DateOfRegistration,
+                Age = registrationFormsBlueprint.Age,
+                Gender = registrationFormsBlueprint.Gender,
+                Address = registrationFormsBlueprint.Address,
+                Email = registrationFormsBlueprint.Email,
+                WhatsAppNumber = registrationFormsBlueprint.WhatsAppNumber,
+                Status = registrationFormsBlueprint.Status,
+                Profession = registrationFormsBlueprint.Profession,
+                QueueStatus = registrationFormsBlueprint.QueueStatus,
+                ComplaintsOfPain = registrationFormsBlueprint.ComplaintsOfPain,
+                DiagnoseResult = registrationFormsBlueprint.DiagnoseResult
             };
 
             await _patientsRepository.AddAsync(patients);
