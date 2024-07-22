@@ -32,9 +32,33 @@ namespace RudyHealthCare.Repositories.Patients
             return await _context.Patients.ToListAsync();
         }
 
+        public async Task<PatientsModel?> GetByIdAsync(string patientId)
+        {
+            return await _context.Patients.FindAsync(patientId);
+        }
+
+        public async Task<IEnumerable<PatientsModel>> GetByQueueStatusAsync(string queueStatus)
+        {
+            return await _context.Patients.Where(patients => patients.QueueStatus == queueStatus).ToListAsync();
+        }
+
         public async Task AddAsync(PatientsModel patients)
         {
             _context.Patients.Add(patients);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(PatientsModel patients)
+        {
+            _context.Entry(patients).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(PatientsModel patients)
+        {
+            _context.Patients.Remove(patients);
 
             await _context.SaveChangesAsync();
         }

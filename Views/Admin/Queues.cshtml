@@ -1,7 +1,13 @@
 @{
     ViewData["Title"] = "Queues | Admin";
     Layout = "_Layout";
+
+    var Patients = ViewData["Patients"] as IEnumerable<RudyHealthCare.Models.Patients.PatientsModel>;
+
+    var index = 1;
 }
+
+@* @model RudyHealthCare.Blueprints.PatientsHelperBlueprint *@
 
 <section class="wrapper">
     <aside id="sidebar" class="rounded-end-4">
@@ -62,97 +68,104 @@
             </div>
 
             <div class="my-3">
-                <table class="table table-striped my-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Antrian</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Kontak</th>
-                            <th scope="col">Tanggal</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>A001</td>
-                            <td>Billy</td>
-                            <td>081226543876</td>
-                            <td>19/08/2024</td>
-                            <td><span class="badge bg-warning">Antri</span></td>
-                            <td>
-                                <a href="" class="text-decoration-none"><i
-                                        class="fa-solid fa-pen-to-square fs-4"></i></a>
+                @if (Patients != null && Patients.Any())
+                {
+                    <table class="table table-striped my-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Antrian</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Kontak</th>
+                                <th scope="col">Tanggal Registrasi</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Patients)
+                            {
+                                <tr>
+                                    <th scope="row">@index</th>
+                                    <td>@Html.DisplayFor(modelItem => item.QueueNumber)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.WhatsAppNumber)</td>
+                                    <td>@item.DateOfRegistration</td>
+                                    <td>
+                                        <span class="badge 
+                                            @if (@item.QueueStatus == "Antri") {
+                                            <text>bg-warning</text>
+                                            }
+                                            else if (@item.QueueStatus == "Diterima") {
+                                            <text>green-background-color</text>
+                                            }
+                                            else if (@item.QueueStatus == "Ditolak") {
+                                            <text>pink-background-color</text>
+                                            }">
+                                            @Html.DisplayFor(modelItem => item.QueueStatus)
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("MedicalRecords", "Admin", new {@item.PatientId})"
+                                            class="text-decoration-none"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
 
-                                <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteConfirmation">
-                                    <i class="fa-solid fa-trash fs-4"></i>
-                                </button>
-                            </td>
-                        </tr>
+                                        <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
+                                            data-bs-target="#DeleteConfirmation">
+                                            <i class="fa-solid fa-trash fs-4"></i>
+                                        </button>
+                                    </td>
+                                </tr>
 
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>A002</td>
-                            <td>Billy</td>
-                            <td>081226543876</td>
-                            <td>19/08/2024</td>
-                            <td><span class="badge bg-warning">Antri</span></td>
-                            <td>
-                                <a href="" class="text-decoration-none"><i
-                                        class="fa-solid fa-pen-to-square fs-4"></i></a>
+                                index++;
+                            }
+                        </tbody>
 
-                                <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteConfirmation">
-                                    <i class="fa-solid fa-trash fs-4"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        <div class="modal fade" id="DeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="DeleteConfirmationLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="DeleteConfirmationLabel">Warning!</h1>
 
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>A003</td>
-                            <td>Billy</td>
-                            <td>081226543876</td>
-                            <td>19/08/2024</td>
-                            <td><span class="badge bg-warning">Antri</span></td>
-                            <td>
-                                <a href="" class="text-decoration-none"><i
-                                        class="fa-solid fa-pen-to-square fs-4"></i></a>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah anda yakin ingin menghapus data ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
 
-                                <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteConfirmation">
-                                    <i class="fa-solid fa-trash fs-4"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <div class="modal fade" id="DeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="DeleteConfirmationLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="DeleteConfirmationLabel">Warning!</h1>
-
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Apakah anda yakin ingin menghapus data ini?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-
-                                    <button type="button" class="btn btn-danger">Yes</button>
+                                        <button type="button" class="btn btn-danger">Yes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </table>
+                    </table>
+                }
+                else
+                {
+                    <table class="table table-striped my-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Antrian</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Kontak</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="lead text-center fs-6">Data tidak ada, belum ada pasien yang
+                                    mendaftar hari ini.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
 
                 <div aria-label="Page navigation example" class="my-4">
                     <ul class="pagination justify-content-center">

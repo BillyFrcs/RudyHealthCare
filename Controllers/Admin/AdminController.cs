@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 
 using RudyHealthCare.Repositories.Patients;
 using RudyHealthCare.Blueprints;
+using RudyHealthCare.Models.Patients;
+using Microsoft.EntityFrameworkCore;
 
 namespace RudyHealthCare.Controllers.Admin
 {
@@ -35,6 +37,7 @@ namespace RudyHealthCare.Controllers.Admin
             return View("Views/Admin/Login.cshtml");
         }
 
+        [HttpGet]
         [Route("/Admin/Dashboard")]
         public async Task<IActionResult> Dashboard()
         {
@@ -61,22 +64,143 @@ namespace RudyHealthCare.Controllers.Admin
             return View("Views/Admin/Dashboard.cshtml");
         }
 
-        [Route("/Admin/Queues")]
-        public IActionResult Queues()
+        [HttpGet]
+        [Route("/Admin/Queues/{queueStatus?}")]
+        public async Task<IActionResult> Queues(string queueStatus = "Antri")
         {
+            IEnumerable<PatientsModel> patientsQueueData = Enumerable.Empty<PatientsModel>();
+
+            if (!string.IsNullOrEmpty(queueStatus))
+            {
+                patientsQueueData = await _repository.GetByQueueStatusAsync(queueStatus);
+            }
+
+            ViewData["Patients"] = patientsQueueData;
+
             return View("Views/Admin/Queues.cshtml");
+
+            /*
+            if (!string.IsNullOrEmpty(queueStatus))
+            {
+                var patientsQueueData = await _repository.GetByQueueStatusAsync(queueStatus);
+
+                var patientsHelperBlueprint = new PatientsHelperBlueprint
+                {
+                    Patients = patientsQueueData
+                };
+
+                return View("Views/Admin/Queues.cshtml", patientsHelperBlueprint);
+            }
+
+            return View("Views/Admin/Queues.cshtml");
+            */
+        }
+
+        [HttpGet]
+        [Route("/Admin/MedicalRecords/{patientId?}")]
+        public async Task<IActionResult> MedicalRecords(string patientId)
+        {
+            var patients = await _repository.GetByIdAsync(patientId);
+
+            if (patients == null)
+            {
+                return NotFound();
+            }
+
+            var patientsMedicalRecordsBlueprint = new PatientsMedicalRecordsBlueprint
+            {
+                PatientId = patients.PatientId,
+                QueueNumber = patients.QueueNumber,
+                Name = patients.Name,
+                IdentityNumber = patients.IdentityNumber,
+                PlaceOfBirth = patients.PlaceOfBirth,
+                DateOfBirth = patients.DateOfBirth,
+                DateOfRegistration = patients.DateOfRegistration,
+                Age = patients.Age,
+                Gender = patients.Gender,
+                Address = patients.Address,
+                Email = patients.Email,
+                WhatsAppNumber = patients.WhatsAppNumber,
+                Status = patients.Status,
+                Profession = patients.Profession,
+                QueueStatus = patients.QueueStatus,
+                ComplaintsOfPain = patients.ComplaintsOfPain,
+                DiagnoseResult = patients.DiagnoseResult
+            };
+
+            // ViewData["Patients"] = patients;
+
+            return View("Views/Admin/MedicalRecords.cshtml", patientsMedicalRecordsBlueprint);
+        }
+
+        [HttpPost]
+        [Route("/Admin/MedicalRecords/{patientId?}")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> MedicalRecords(string patientId, PatientsMedicalRecordsBlueprint patientsMedicalRecordsBlueprint)
+        {
+            if (patientId != patientsMedicalRecordsBlueprint.PatientId)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var patients = await _repository.GetByIdAsync(patientId);
+
+                if (patients == null)
+                {
+                    return NotFound();
+                }
+
+                patients.PatientId = patientsMedicalRecordsBlueprint.PatientId;
+                patients.QueueNumber = patientsMedicalRecordsBlueprint.QueueNumber;
+                patients.Name = patientsMedicalRecordsBlueprint.Name;
+                patients.IdentityNumber = patientsMedicalRecordsBlueprint.IdentityNumber;
+                patients.PlaceOfBirth = patientsMedicalRecordsBlueprint.PlaceOfBirth;
+                patients.DateOfBirth = patientsMedicalRecordsBlueprint.DateOfBirth;
+                patients.DateOfRegistration = patientsMedicalRecordsBlueprint.DateOfRegistration;
+                patients.Age = patientsMedicalRecordsBlueprint.Age;
+                patients.Gender = patientsMedicalRecordsBlueprint.Gender;
+                patients.Address = patientsMedicalRecordsBlueprint.Address;
+                patients.Email = patientsMedicalRecordsBlueprint.Email;
+                patients.WhatsAppNumber = patientsMedicalRecordsBlueprint.WhatsAppNumber;
+                patients.Status = patientsMedicalRecordsBlueprint.Status;
+                patients.Profession = patientsMedicalRecordsBlueprint.Profession;
+                patients.QueueStatus = patientsMedicalRecordsBlueprint.QueueStatus;
+                patients.ComplaintsOfPain = patientsMedicalRecordsBlueprint.ComplaintsOfPain;
+                patients.DiagnoseResult = patientsMedicalRecordsBlueprint.DiagnoseResult;
+
+                try
+                {
+                    await _repository.UpdateAsync(patients);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!await PatientExists(patientsMedicalRecordsBlueprint.PatientId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return RedirectToAction(nameof(Dashboard));
+            }
+
+            return View(nameof(Dashboard), patientsMedicalRecordsBlueprint);
+        }
+
+        private async Task<bool> PatientExists(string patientId)
+        {
+            return await _repository.GetByIdAsync(patientId) != null;
         }
 
         [Route("/Admin/Profile")]
         public IActionResult Profile()
         {
             return View("Views/Admin/Profile.cshtml");
-        }
-
-        [Route("/Admin/MedicalRecords")]
-        public IActionResult MedicalRecords()
-        {
-            return View("Views/Admin/MedicalRecords.cshtml");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -11,6 +11,10 @@ namespace RudyHealthCare.Repositories.Patients
         public Task<int> GetTotalCountAsync();
         public Task<int> GetTotalCountQueueStatusAsync(string queueStatus);
         public Task<IEnumerable<PatientsModel>> GetAllAsync();
+        public Task<PatientsModel?> GetByIdAsync(string patientId);
+        public Task<IEnumerable<PatientsModel>> GetByQueueStatusAsync(string queueStatus);
         public Task AddAsync(PatientsModel patients);
+        public Task UpdateAsync(PatientsModel patients);
+        public Task DeleteAsync(PatientsModel patients);
     }
 }

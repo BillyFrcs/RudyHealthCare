@@ -146,21 +146,20 @@
                                 <td>@item.DateOfRegistration</td>
                                 <td>
                                     <span class="badge 
-                                        @if (item.QueueStatus == "Antri") {
+                                        @if (@item.QueueStatus == "Antri") {
                                             <text>bg-warning</text>
                                         }
-                                        else if (item.QueueStatus == "Diterima") {
+                                        else if (@item.QueueStatus == "Diterima") {
                                             <text>green-background-color</text>
                                         }
-                                        else if (item.QueueStatus == "Ditolak") {
+                                        else if (@item.QueueStatus == "Ditolak") {
                                             <text>pink-background-color</text>
                                         }">
                                         @item.QueueStatus
                                     </span>
                                 </td>
                                 <td>
-                                    <a asp-controller="Admin" asp-action="MedicalRecords" class="text-decoration-none"><i
-                                            class="fa-solid fa-pen-to-square fs-4"></i></a>
+                                    <a href="@Url.Action("MedicalRecords", "Admin", new {@item.PatientId})" class="text-decoration-none"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
 
                                     <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
                                         data-bs-target="#DeleteConfirmation">
@@ -215,3 +214,7 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script src="~/js/action.js"></script>
+}
