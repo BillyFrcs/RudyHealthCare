@@ -11,5 +11,8 @@ namespace RudyHealthCare.Blueprints
         public IEnumerable<PatientsModel> Patients { get; set; } = [];
 
         public int TotalCount { get; set; }
+        public int TotalCountQueue { get; set; }
+        public int TotalCountAccepted { get; set; }
+        public int TotalCountRejected { get; set; }
     }
 }

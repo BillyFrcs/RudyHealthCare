@@ -22,6 +22,11 @@ namespace RudyHealthCare.Repositories.Patients
             return await _context.Patients.CountAsync();
         }
 
+        public async Task<int> GetTotalCountQueueStatusAsync(string queueStatus)
+        {
+            return await _context.Patients.CountAsync(patients => patients.QueueStatus == queueStatus);
+        }
+
         public async Task<IEnumerable<PatientsModel>> GetAllAsync()
         {
             return await _context.Patients.ToListAsync();

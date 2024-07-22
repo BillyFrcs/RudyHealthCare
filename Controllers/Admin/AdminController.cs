@@ -38,19 +38,25 @@ namespace RudyHealthCare.Controllers.Admin
         [Route("/Admin/Dashboard")]
         public async Task<IActionResult> Dashboard()
         {
-            var patientsData = await _repository.GetAllAsync();
             var totalCount = await _repository.GetTotalCountAsync();
+            var totalCountQueue = await _repository.GetTotalCountQueueStatusAsync("Antri");
+            var totalCountAccepted = await _repository.GetTotalCountQueueStatusAsync("Diterima");
+            var totalCountRejected = await _repository.GetTotalCountQueueStatusAsync("Ditolak");
+            var patientsData = await _repository.GetAllAsync();
 
             var patientsHelperBlueprint = new PatientsHelperBlueprint
             {
-                Patients = patientsData,
-                TotalCount = totalCount
+                TotalCount = totalCount,
+                TotalCountQueue = totalCountQueue,
+                TotalCountAccepted = totalCountAccepted,
+                TotalCountRejected = totalCountRejected,
+                Patients = patientsData
             };
 
             if (patientsData != null)
             {
                 return View("Views/Admin/Dashboard.cshtml", patientsHelperBlueprint);
-            } 
+            }
 
             return View("Views/Admin/Dashboard.cshtml");
         }
