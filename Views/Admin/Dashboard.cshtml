@@ -115,7 +115,7 @@
                     <form id="SearchForm" asp-controller="Admin" asp-action="Search" method="get" class="form-outline d-flex gap-3 my-3"
                         data-mdb-input-init>
                         <input type="search" id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm" asp-for="SearchTerm"
-                            class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien" required />
+                            class="form-control custom-input rounded-3 shadow-sm" placeholder="Cari data pasien" required />
 
                         <button type="submit" class="btn btn-primary main-background-color shadow-lg">
                             <i class="fas fa-search"></i>
@@ -131,7 +131,8 @@
                             <th scope="col">No</th>
                             <th scope="col">Antrian</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Kontak</th>
+                            <th scope="col">Nomor KTP</th>
+                            <th scope="col">Nomor HP</th>
                             <th scope="col">Tanggal Registrasi</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
@@ -146,6 +147,7 @@
                                     <th scope="row">@index</th>
                                     <td>@item.QueueNumber</td>
                                     <td>@item.Name</td>
+                                    <td>@item.IdentityNumber</td>
                                     <td>@item.PhoneNumber</td>
                                     <td>@item.DateOfRegistration</td>
                                     <td>

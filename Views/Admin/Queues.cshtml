@@ -60,7 +60,7 @@
                 <form asp-controller="Admin" asp-action="SearchQueues" method="get" class="form-outline d-flex gap-3 my-3"
                     data-mdb-input-init>
                     <input type="search" id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm"
-                        class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien" required />
+                        class="form-control custom-input rounded-3 shadow-sm" placeholder="Cari data pasien" required />
 
                     <button type="submit" class="btn btn-primary main-background-color shadow-lg">
                         <i class="fas fa-search"></i>
@@ -75,7 +75,8 @@
                             <th scope="col">No</th>
                             <th scope="col">Antrian</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Kontak</th>
+                            <th scope="col">Nomor KTP</th>
+                            <th scope="col">Nomor HP</th>
                             <th scope="col">Tanggal Registrasi</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
@@ -90,6 +91,7 @@
                                     <th scope="row">@index</th>
                                     <td>@Html.DisplayFor(modelItem => item.QueueNumber)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.IdentityNumber)</td>
                                     <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
                                     <td>@item.DateOfRegistration</td>
                                     <td>
