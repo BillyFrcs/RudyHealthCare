@@ -24,10 +24,15 @@ namespace RudyHealthCare.Blueprints
         public string? PlaceOfBirth { get; set; }
 
         [Required(ErrorMessage = "Tanggal lahir tidak boleh kosong")]
-        public DateTime DateOfBirth { get; set; }
+        public string? DateOfBirth { get; set; }
 
         [Required]
-        public DateTime DateOfRegistration { get; set; }
+        public string? DateOfRegistration { get; set; }
+
+        [Required]
+        public string? TimeOfRegistration { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
 
         [Required(ErrorMessage = "Umur tidak boleh kosong")]
         [Range(1, int.MaxValue, ErrorMessage = "Umur tidak boleh kurang dari 1")]
@@ -42,9 +47,9 @@ namespace RudyHealthCare.Blueprints
         [Required(ErrorMessage = "Email tidak boleh kosong")]
         public string? Email { get; set; }
 
-        [Required(ErrorMessage = "Nomor WhatsApp tidak boleh kosong")]
-        [StringLength(12, ErrorMessage = "Nomor WhatsApp tidak boleh lebih dari 12 karakter")]
-        public string? WhatsAppNumber { get; set; }
+        [Required(ErrorMessage = "Nomor HP tidak boleh kosong")]
+        [StringLength(12, ErrorMessage = "Nomor HP tidak boleh lebih dari 12 karakter")]
+        public string? PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Status tidak boleh kosong")]
         public string? Status { get; set; }

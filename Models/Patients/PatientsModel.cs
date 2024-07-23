@@ -25,12 +25,16 @@ namespace RudyHealthCare.Models.Patients
         public string? PlaceOfBirth { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime DateOfBirth { get; set; }
+        public string? DateOfBirth { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime DateOfRegistration { get; set; }
+        public string? DateOfRegistration { get; set; }
+
+        [Required]
+        public string? TimeOfRegistration { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime UpdatedAt { get; set; }
 
         [Required]
         public int Age { get; set; }
@@ -45,7 +49,7 @@ namespace RudyHealthCare.Models.Patients
         public string? Email { get; set; }
 
         [Required]
-        public string? WhatsAppNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         [Required]
         public string? Status { get; set; }

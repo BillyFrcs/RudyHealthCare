@@ -136,16 +136,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Patients)
+                        @if (Model.Patients != null && Model.Patients.Any())
                         {
-                            <tr>
-                                <th scope="row">@index</th>
-                                <td>@item.QueueNumber</td>
-                                <td>@item.Name</td>
-                                <td>@item.WhatsAppNumber</td>
-                                <td>@item.DateOfRegistration</td>
-                                <td>
-                                    <span class="badge 
+                            @foreach (var item in Model.Patients)
+                            {
+                                <tr>
+                                    <th scope="row">@index</th>
+                                    <td>@item.QueueNumber</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td>@item.DateOfRegistration</td>
+                                    <td>
+                                        <span class="badge 
                                         @if (@item.QueueStatus == "Antri") {
                                             <text>bg-warning</text>
                                         }
@@ -155,47 +157,63 @@
                                         else if (@item.QueueStatus == "Ditolak") {
                                             <text>pink-background-color</text>
                                         }">
-                                        @item.QueueStatus
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("MedicalRecords", "Admin", new {@item.PatientId})" class="text-decoration-none"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
+                                            @item.QueueStatus
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("MedicalRecords", "Admin", new {@item.PatientId})"
+                                            class="text-decoration-none shadow-lg"><i
+                                                class="fa-solid fa-pen-to-square fs-4"></i></a>
 
-                                    <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
-                                        data-bs-target="#DeleteConfirmation">
-                                        <i class="fa-solid fa-trash fs-4"></i>
-                                    </button>
-                                </td>
+                                        <button type="button" class="btn text-danger border-0" data-bs-toggle="modal"
+                                            data-bs-target="#DeleteConfirmationModal" data-id="@item.PatientId">
+                                            <i class="fa-solid fa-trash fs-4"></i>
+                                        </button>
+
+                                        @* <a asp-controller="Admin" asp-action="MedicalRecords" asp-route-id="@item.PatientId"
+                                class="text-decoration-none"><i class="fa-solid fa-pen-to-square fs-4"></i></a> *@
+                                    </td>
+                                </tr>
+
+                                index++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="lead text-center fs-6">Data tidak ada, belum ada pasien yang
+                                    mendaftar.</td>
                             </tr>
-
-                            index++;
                         }
                     </tbody>
+                </table>
 
-                    <div class="modal fade" id="DeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="DeleteConfirmationLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="DeleteConfirmationLabel">Warning!</h1>
+                <div class="modal fade" id="DeleteConfirmationModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="DeleteConfirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="DeleteConfirmationModalLabel">Warning!</h1>
 
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Apakah anda yakin ingin menghapus data ini?
-                                </div>
-                                <div class="modal-footer">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah anda yakin ingin menghapus data ini?
+                            </div>
+                            <div class="modal-footer">
+                                <form id="DeleteForm" asp-controller="Admin" asp-action="Delete" method="post">
+                                    <input type="hidden" name="id" id="DeleteId" />
+
                                     <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
+                                        data-bs-dismiss="modal">Cancel</button>
 
-                                    <button type="button" class="btn btn-danger">Yes</button>
-                                </div>
+                                    <button type="submit" class="btn btn-danger">Yes</button>
+                                </form>
                             </div>
                         </div>
                     </div>
-
-                </table>
+                </div>
 
                 <div aria-label="Page navigation example" class="my-4">
                     <ul class="pagination justify-content-center">
@@ -216,5 +234,5 @@
 </section>
 
 @section Scripts {
-    <script src="~/js/action.js"></script>
+    <script type="text/javascript" src="~/js/action.js"></script>
 }

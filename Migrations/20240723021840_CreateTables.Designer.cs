@@ -12,7 +12,7 @@ using RudyHealthCare.Data;
 namespace RudyHealthCare.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240720170703_CreateTables")]
+    [Migration("20240723021840_CreateTables")]
     partial class CreateTables
     {
         /// <inheritdoc />
@@ -67,11 +67,13 @@ namespace RudyHealthCare.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DateOfBirth")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateOfRegistration")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DateOfRegistration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DiagnoseResult")
                         .IsRequired()
@@ -90,6 +92,10 @@ namespace RudyHealthCare.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -113,9 +119,12 @@ namespace RudyHealthCare.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WhatsAppNumber")
+                    b.Property<string>("TimeOfRegistration")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("PatientId");
 

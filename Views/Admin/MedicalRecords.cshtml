@@ -174,11 +174,11 @@
 
                             <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
                                 <div class="col-12 col-md-12">
-                                    <input type="number" asp-for="WhatsAppNumber"
-                                        class="form-control rounded-5 custom-input" placeholder="Masukan no WhatsApp">
+                                    <input type="number" asp-for="PhoneNumber"
+                                        class="form-control rounded-5 custom-input" placeholder="Masukan no HP">
 
                                     <span class="lead fw-light text-danger fs-6"
-                                        asp-validation-for="WhatsAppNumber"></span>
+                                        asp-validation-for="PhoneNumber"></span>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                         </div>
 
                         <div class="row input-container d-flex align-items-center mt-3">
-                            <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
+                            <div class="col-12 col-md-6 mb-md-0 d-flex justify-content-start">
                                 <div class="col-12 col-md-12">
                                     <input type="text" asp-for="QueueNumber" class="form-control rounded-5 custom-input"
                                         placeholder="Nomor Antrian" readonly>
@@ -252,6 +252,17 @@
 
                                     <span class="lead fw-light text-danger fs-6"
                                         asp-validation-for="QueueStatus"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 mt-3 d-flex justify-content-end">
+                                <div class="col-12 col-md-12">
+                                    <input type="text" asp-for="TimeOfRegistration"
+                                        class="form-control rounded-5 custom-input" placeholder="Waktu registrasi"
+                                        readonly>
+
+                                    <span class="lead fw-light text-danger fs-6"
+                                        asp-validation-for="TimeOfRegistration"></span>
                                 </div>
                             </div>
                         </div>

@@ -18,7 +18,7 @@ namespace RudyHealthCare.Models.Patients
             RuleFor(x => x.Gender).NotEmpty().WithMessage("The field is required");
             RuleFor(x => x.Address).NotEmpty().WithMessage("The field is required");
             RuleFor(x => x.Email).NotEmpty().WithMessage("The field is required");
-            RuleFor(x => x.WhatsAppNumber).NotEmpty().WithMessage("The field is required");
+            RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage("The field is required");
             RuleFor(x => x.Status).NotEmpty().WithMessage("The field is required");
             RuleFor(x => x.Profession).NotEmpty().WithMessage("The field is required");
             RuleFor(x => x.ComplaintsOfPain).NotEmpty().WithMessage("The field is required");

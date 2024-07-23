@@ -116,11 +116,13 @@ namespace RudyHealthCare.Controllers.Admin
                 PlaceOfBirth = patients.PlaceOfBirth,
                 DateOfBirth = patients.DateOfBirth,
                 DateOfRegistration = patients.DateOfRegistration,
+                TimeOfRegistration = patients.TimeOfRegistration,
+                UpdatedAt = DateTime.Now,
                 Age = patients.Age,
                 Gender = patients.Gender,
                 Address = patients.Address,
                 Email = patients.Email,
-                WhatsAppNumber = patients.WhatsAppNumber,
+                PhoneNumber = patients.PhoneNumber,
                 Status = patients.Status,
                 Profession = patients.Profession,
                 QueueStatus = patients.QueueStatus,
@@ -159,11 +161,13 @@ namespace RudyHealthCare.Controllers.Admin
                 patients.PlaceOfBirth = patientsMedicalRecordsBlueprint.PlaceOfBirth;
                 patients.DateOfBirth = patientsMedicalRecordsBlueprint.DateOfBirth;
                 patients.DateOfRegistration = patientsMedicalRecordsBlueprint.DateOfRegistration;
+                patients.TimeOfRegistration = patientsMedicalRecordsBlueprint.TimeOfRegistration;
+                patients.UpdatedAt = DateTime.Now;
                 patients.Age = patientsMedicalRecordsBlueprint.Age;
                 patients.Gender = patientsMedicalRecordsBlueprint.Gender;
                 patients.Address = patientsMedicalRecordsBlueprint.Address;
                 patients.Email = patientsMedicalRecordsBlueprint.Email;
-                patients.WhatsAppNumber = patientsMedicalRecordsBlueprint.WhatsAppNumber;
+                patients.PhoneNumber = patientsMedicalRecordsBlueprint.PhoneNumber;
                 patients.Status = patientsMedicalRecordsBlueprint.Status;
                 patients.Profession = patientsMedicalRecordsBlueprint.Profession;
                 patients.QueueStatus = patientsMedicalRecordsBlueprint.QueueStatus;
@@ -195,6 +199,23 @@ namespace RudyHealthCare.Controllers.Admin
         private async Task<bool> PatientExists(string patientId)
         {
             return await _repository.GetByIdAsync(patientId) != null;
+        }
+
+        [HttpPost]
+        [Route("/Admin/MedicalRecords/Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var patients = await _repository.GetByIdAsync(id);
+
+            if (patients != null)
+            {
+                await _repository.DeleteAsync(patients);
+            }
+
+            return RedirectToAction(nameof(Dashboard));
+
+            // return Json(new { success = true });
         }
 
         [Route("/Admin/Profile")]

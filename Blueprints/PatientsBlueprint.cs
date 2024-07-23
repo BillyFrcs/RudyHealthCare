@@ -21,7 +21,9 @@ namespace RudyHealthCare.Blueprints
         public string? PlaceOfBirth { get; set; }
 
         [Required(ErrorMessage = "Tanggal lahir tidak boleh kosong")]
-        public DateTime DateOfBirth { get; set; }
+        public string? DateOfBirth { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
 
         [Required(ErrorMessage = "Umur tidak boleh kosong")]
         [Range(1, int.MaxValue, ErrorMessage = "Umur tidak boleh kurang dari 1")]
@@ -36,9 +38,9 @@ namespace RudyHealthCare.Blueprints
         [Required(ErrorMessage = "Email tidak boleh kosong")]
         public string? Email { get; set; }
 
-        [Required(ErrorMessage = "Nomor WhatsApp tidak boleh kosong")]
-        [StringLength(12, ErrorMessage = "Nomor WhatsApp tidak boleh lebih dari 12 karakter")]
-        public string? WhatsAppNumber { get; set; }
+        [Required(ErrorMessage = "Nomor HP tidak boleh kosong")]
+        [StringLength(12, ErrorMessage = "Nomor HP tidak boleh lebih dari 12 karakter")]
+        public string? PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Status tidak boleh kosong")]
         public string? Status { get; set; }
@@ -70,6 +72,19 @@ namespace RudyHealthCare.Blueprints
         }
 
         [Required]
+        public string? DateOfRegistration
+        {
+            get => DateTime.Now.ToString("dd-MM-yyyy");
+        }
+
+
+        [Required]
+        public string? TimeOfRegistration
+        {
+            get => DateTime.Now.ToString("HH:mm");
+        }
+
+        [Required]
         public string? QueueStatus
         {
             get => "Antri";
@@ -79,12 +94,6 @@ namespace RudyHealthCare.Blueprints
         public string? DiagnoseResult
         {
             get => "Belum ada hasil diagnosa dari dokter.";
-        }
-
-        [Required]
-        public DateTime DateOfRegistration
-        {
-            get => DateTime.Now;
         }
     }
 }
