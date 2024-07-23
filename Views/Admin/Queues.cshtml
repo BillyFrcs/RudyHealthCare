@@ -2,12 +2,12 @@
     ViewData["Title"] = "Queues | Admin";
     Layout = "_Layout";
 
-    var Patients = ViewData["Patients"] as IEnumerable<RudyHealthCare.Models.Patients.PatientsModel>;
+    // var Patients = ViewData["Patients"] as IEnumerable<RudyHealthCare.Models.Patients.PatientsModel>;
 
     var index = 1;
 }
 
-@* @model RudyHealthCare.Blueprints.PatientsHelperBlueprint *@
+@model RudyHealthCare.Blueprints.PatientsHelperBlueprint
 
 <section class="wrapper">
     <aside id="sidebar" class="rounded-end-4">
@@ -57,9 +57,10 @@
             <p class="lead fs-6 my-1">Daftar antrian pasien yang ingin konsultasi hari ini.</p>
 
             <div class="input-group">
-                <form action="post" class="form-outline d-flex gap-3 my-3" data-mdb-input-init>
-                    <input type="search" id="search" name="search" class="form-control custom-input rounded-1 shadow-sm"
-                        placeholder="Cari data pasien" required />
+                <form asp-controller="Admin" asp-action="SearchQueues" method="get" class="form-outline d-flex gap-3 my-3"
+                    data-mdb-input-init>
+                    <input type="search" id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm"
+                        class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien" required />
 
                     <button type="submit" class="btn btn-primary main-background-color shadow-lg">
                         <i class="fas fa-search"></i>
@@ -81,9 +82,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Patients != null && Patients.Any())
+                        @if (Model.Patients != null && Model.Patients.Any())
                         {
-                            @foreach (var item in Patients)
+                            @foreach (var item in Model.Patients)
                             {
                                 <tr>
                                     <th scope="row">@index</th>

@@ -112,14 +112,16 @@
                 <h5 class="mb-0 mt-5 fs-5 fw-bold main-font-color">Rekam Medis Pasien</h5>
 
                 <div class="input-group">
-                    <form action="post" class="form-outline d-flex gap-3 my-3" data-mdb-input-init>
-                        <input type="search" id="search" name="search"
-                            class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien"
-                            required />
+                    <form id="SearchForm" asp-controller="Admin" asp-action="Search" method="get" class="form-outline d-flex gap-3 my-3"
+                        data-mdb-input-init>
+                        <input type="search" id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm" asp-for="SearchTerm"
+                            class="form-control custom-input rounded-1 shadow-sm" placeholder="Cari data pasien" required />
 
                         <button type="submit" class="btn btn-primary main-background-color shadow-lg">
                             <i class="fas fa-search"></i>
                         </button>
+
+                        <span asp-validation-for="SearchTerm" class="lead fw-light text-danger fs-6"></span>
                     </form>
                 </div>
 
@@ -181,8 +183,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="7" class="lead text-center fs-6">Data tidak ada, belum ada pasien yang
-                                    mendaftar.</td>
+                                <td colspan="7" class="lead text-center fs-6">Data pasien tidak ada</td>
                             </tr>
                         }
                     </tbody>

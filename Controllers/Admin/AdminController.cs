@@ -65,21 +65,96 @@ namespace RudyHealthCare.Controllers.Admin
         }
 
         [HttpGet]
+        public async Task<IActionResult> Search(PatientsHelperBlueprint patientsBlueprint)
+        {
+            /*
+            if (!string.IsNullOrEmpty(patientsBlueprint.SearchTerm))
+            {
+                ModelState.AddModelError("", "Search term cannot be empty.");
+
+                patientsBlueprint.Patients = Enumerable.Empty<PatientsModel>();
+            }
+            */
+
+            var patientsData = await _repository.GetAllAsync();
+
+            if (!string.IsNullOrEmpty(patientsBlueprint.SearchTerm))
+            {
+                var searchTermLower = patientsBlueprint.SearchTerm.ToLower();
+
+                patientsData = patientsData.Where(patient =>
+                    patient.Name != null && patient.Name.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.IdentityNumber != null && patient.IdentityNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.PhoneNumber != null && patient.PhoneNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.Email != null && patient.Email.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.QueueNumber != null && patient.QueueNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.QueueStatus != null && patient.QueueStatus.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.Gender != null && patient.Gender.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.Profession != null && patient.Profession.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase)
+                );
+
+                /*
+                patientsData = patientsData.Where(patient =>
+                    patient.Name.ToLower().Contains(searchTermLower) ||
+                    patient.IdentityNumber.ToLower().Contains(searchTermLower) ||
+                    patient.PhoneNumber.ToLower().Contains(searchTermLower) ||
+                    patient.Email.ToLower().Contains(searchTermLower) ||
+                    patient.QueueNumber.ToLower().Contains(searchTermLower) ||
+                    patient.QueueStatus.ToLower().Contains(searchTermLower) ||
+                    patient.Gender.ToLower().Contains(searchTermLower) ||
+                    patient.Profession.ToLower().Contains(searchTermLower)
+                );
+                */
+            }
+
+            patientsBlueprint.Patients = patientsData.ToList();
+
+            return View(nameof(Dashboard), patientsBlueprint);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchQueues(PatientsHelperBlueprint patientsBlueprint)
+        {
+            var patientsData = await _repository.GetAllAsync();
+
+            if (!string.IsNullOrEmpty(patientsBlueprint.SearchTerm))
+            {
+                var searchTermLower = patientsBlueprint.SearchTerm.ToLower();
+
+                patientsData = patientsData.Where(patient =>
+                    patient.Name != null && patient.Name.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.IdentityNumber != null && patient.IdentityNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.PhoneNumber != null && patient.PhoneNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.Email != null && patient.Email.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.QueueNumber != null && patient.QueueNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.QueueStatus != null && patient.QueueStatus.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.Gender != null && patient.Gender.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
+                    patient.Profession != null && patient.Profession.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase)
+                );
+
+                /*
+                patientsData = patientsData.Where(patient =>
+                    patient.Name.ToLower().Contains(searchTermLower) ||
+                    patient.IdentityNumber.ToLower().Contains(searchTermLower) ||
+                    patient.PhoneNumber.ToLower().Contains(searchTermLower) ||
+                    patient.Email.ToLower().Contains(searchTermLower) ||
+                    patient.QueueNumber.ToLower().Contains(searchTermLower) ||
+                    patient.QueueStatus.ToLower().Contains(searchTermLower) ||
+                    patient.Gender.ToLower().Contains(searchTermLower) ||
+                    patient.Profession.ToLower().Contains(searchTermLower)
+                );
+                */
+            }
+
+            patientsBlueprint.Patients = patientsData.ToList();
+
+            return View(nameof(Queues), patientsBlueprint);
+        }
+
+        [HttpGet]
         [Route("/Admin/Queues/{queueStatus?}")]
         public async Task<IActionResult> Queues(string queueStatus = "Antri")
         {
-            IEnumerable<PatientsModel> patientsQueueData = Enumerable.Empty<PatientsModel>();
-
-            if (!string.IsNullOrEmpty(queueStatus))
-            {
-                patientsQueueData = await _repository.GetByQueueStatusAsync(queueStatus);
-            }
-
-            ViewData["Patients"] = patientsQueueData;
-
-            return View("Views/Admin/Queues.cshtml");
-
-            /*
             if (!string.IsNullOrEmpty(queueStatus))
             {
                 var patientsQueueData = await _repository.GetByQueueStatusAsync(queueStatus);
@@ -91,6 +166,18 @@ namespace RudyHealthCare.Controllers.Admin
 
                 return View("Views/Admin/Queues.cshtml", patientsHelperBlueprint);
             }
+
+            return View("Views/Admin/Queues.cshtml");
+
+            /*
+            IEnumerable<PatientsModel> patientsQueueData = Enumerable.Empty<PatientsModel>();
+
+            if (!string.IsNullOrEmpty(queueStatus))
+            {
+                patientsQueueData = await _repository.GetByQueueStatusAsync(queueStatus);
+            }
+
+            ViewData["Patients"] = patientsQueueData;
 
             return View("Views/Admin/Queues.cshtml");
             */
