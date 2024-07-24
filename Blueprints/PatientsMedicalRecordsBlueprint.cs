@@ -32,6 +32,7 @@ namespace RudyHealthCare.Blueprints
         [Required]
         public string? TimeOfRegistration { get; set; }
 
+        public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
         [Required(ErrorMessage = "Umur tidak boleh kosong")]

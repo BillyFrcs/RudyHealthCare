@@ -69,7 +69,7 @@ namespace RudyHealthCare.Controllers.Admin
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search(PatientsHelperBlueprint patientsBlueprint)
+        public async Task<IActionResult> Search(PatientsHelperBlueprint patientsHelperBlueprint, int page = 1, int pageSize = 10)
         {
             /*
             if (!string.IsNullOrEmpty(patientsBlueprint.SearchTerm))
@@ -82,9 +82,9 @@ namespace RudyHealthCare.Controllers.Admin
 
             var patientsData = await _repository.GetAllAsync();
 
-            if (!string.IsNullOrEmpty(patientsBlueprint.SearchTerm))
+            if (!string.IsNullOrEmpty(patientsHelperBlueprint.SearchTerm))
             {
-                var searchTermLower = patientsBlueprint.SearchTerm.ToLower();
+                var searchTermLower = patientsHelperBlueprint.SearchTerm.ToLower();
 
                 patientsData = patientsData.Where(patient =>
                     patient.Name != null && patient.Name.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
@@ -111,19 +111,19 @@ namespace RudyHealthCare.Controllers.Admin
                 */
             }
 
-            patientsBlueprint.Patients = patientsData.ToList();
+            patientsHelperBlueprint.Patients = patientsData.ToList();
 
-            return View(nameof(Dashboard), patientsBlueprint);
+            return View(nameof(Dashboard), patientsHelperBlueprint);
         }
 
         [HttpGet]
-        public async Task<IActionResult> SearchQueues(PatientsHelperBlueprint patientsBlueprint)
+        public async Task<IActionResult> SearchQueues(PatientsHelperBlueprint patientsHelperBlueprint, int page = 1, int pageSize = 10)
         {
             var patientsData = await _repository.GetAllAsync();
 
-            if (!string.IsNullOrEmpty(patientsBlueprint.SearchTerm))
+            if (!string.IsNullOrEmpty(patientsHelperBlueprint.SearchTerm))
             {
-                var searchTermLower = patientsBlueprint.SearchTerm.ToLower();
+                var searchTermLower = patientsHelperBlueprint.SearchTerm.ToLower();
 
                 patientsData = patientsData.Where(patient =>
                     patient.Name != null && patient.Name.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
@@ -150,9 +150,9 @@ namespace RudyHealthCare.Controllers.Admin
                 */
             }
 
-            patientsBlueprint.Patients = patientsData.ToList();
+            patientsHelperBlueprint.Patients = patientsData.ToList();
 
-            return View(nameof(Queues), patientsBlueprint);
+            return View(nameof(Queues), patientsHelperBlueprint);
         }
 
         [HttpGet]
@@ -210,6 +210,7 @@ namespace RudyHealthCare.Controllers.Admin
                 DateOfBirth = patients.DateOfBirth,
                 DateOfRegistration = patients.DateOfRegistration,
                 TimeOfRegistration = patients.TimeOfRegistration,
+                CreatedAt = patients.CreatedAt,
                 UpdatedAt = DateTime.Now,
                 Age = patients.Age,
                 Gender = patients.Gender,
@@ -255,6 +256,7 @@ namespace RudyHealthCare.Controllers.Admin
                 patients.DateOfBirth = patientsMedicalRecordsBlueprint.DateOfBirth;
                 patients.DateOfRegistration = patientsMedicalRecordsBlueprint.DateOfRegistration;
                 patients.TimeOfRegistration = patientsMedicalRecordsBlueprint.TimeOfRegistration;
+                patients.CreatedAt = patientsMedicalRecordsBlueprint.CreatedAt;
                 patients.UpdatedAt = DateTime.Now;
                 patients.Age = patientsMedicalRecordsBlueprint.Age;
                 patients.Gender = patientsMedicalRecordsBlueprint.Gender;

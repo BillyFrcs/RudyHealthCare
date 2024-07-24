@@ -34,6 +34,9 @@ namespace RudyHealthCare.Models.Patients
         public string? TimeOfRegistration { get; set; }
 
         [DataType(DataType.DateTime)]
+        public DateTime CreatedAt { get; set; }
+
+        [DataType(DataType.DateTime)]
         public DateTime UpdatedAt { get; set; }
 
         [Required]

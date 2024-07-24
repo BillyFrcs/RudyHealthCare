@@ -12,7 +12,7 @@ using RudyHealthCare.Data;
 namespace RudyHealthCare.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240723021840_CreateTables")]
+    [Migration("20240724115804_CreateTables")]
     partial class CreateTables
     {
         /// <inheritdoc />
@@ -66,6 +66,9 @@ namespace RudyHealthCare.Migrations
                     b.Property<string>("ComplaintsOfPain")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DateOfBirth")
                         .IsRequired()

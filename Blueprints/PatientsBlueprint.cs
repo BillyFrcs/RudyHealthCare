@@ -71,6 +71,9 @@ namespace RudyHealthCare.Blueprints
             }
         }
 
+        [DataType(DataType.DateTime)]
+        public DateTime CreatedAt => DateTime.Now;
+        
         [Required]
         public string? DateOfRegistration
         {

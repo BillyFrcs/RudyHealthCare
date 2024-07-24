@@ -32,12 +32,24 @@ namespace RudyHealthCare.Repositories.Patients
 
         public async Task<IEnumerable<PatientsModel>> GetAllAsync()
         {
-            return await _context.Patients.ToListAsync();
+            var query = _context.Patients.AsQueryable();
+
+            query = query.OrderByDescending(patient => patient.CreatedAt);
+
+            return await query.ToListAsync();
+
+            // return await _context.Patients.ToListAsync();
         }
 
         public async Task<IEnumerable<PatientsModel>> GetPatientsAsync(int pageNumber, int pageSize)
         {
-            return await _context.Patients.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            var query = _context.Patients.AsQueryable();
+
+            query = query.OrderByDescending(patient => patient.CreatedAt);
+
+            return await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            // return await _context.Patients.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task<PatientsModel?> GetByIdAsync(string patientId)

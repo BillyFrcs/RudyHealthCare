@@ -54,6 +54,7 @@ namespace RudyHealthCare.Controllers.Patients
                     DateOfBirth = patientsBlueprint.DateOfBirth,
                     DateOfRegistration = patientsBlueprint.DateOfRegistration,
                     TimeOfRegistration = patientsBlueprint.TimeOfRegistration,
+                    CreatedAt = patientsBlueprint.CreatedAt,
                     Age = patientsBlueprint.Age,
                     Gender = patientsBlueprint.Gender,
                     Address = patientsBlueprint.Address,
