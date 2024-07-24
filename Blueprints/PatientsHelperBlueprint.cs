@@ -16,7 +16,12 @@ namespace RudyHealthCare.Blueprints
         public int TotalCountAccepted { get; set; }
         public int TotalCountRejected { get; set; }
 
-        [Required (ErrorMessage = "Search cannot be empty")]
+        [Required(ErrorMessage = "Search cannot be empty")]
         public string? SearchTerm { get; set; }
+
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public int TotalPatients { get; set; }
+        public int TotalPages => (int)Math.Ceiling((double)TotalPatients / PageSize);
     }
 }

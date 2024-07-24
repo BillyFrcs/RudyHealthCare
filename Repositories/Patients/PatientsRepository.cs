@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
+using X.PagedList.Mvc.Core;
+
 using RudyHealthCare.Data;
 using RudyHealthCare.Models.Patients;
 
@@ -32,14 +35,19 @@ namespace RudyHealthCare.Repositories.Patients
             return await _context.Patients.ToListAsync();
         }
 
+        public async Task<IEnumerable<PatientsModel>> GetPatientsAsync(int pageNumber, int pageSize)
+        {
+            return await _context.Patients.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+        }
+
         public async Task<PatientsModel?> GetByIdAsync(string patientId)
         {
             return await _context.Patients.FindAsync(patientId);
         }
 
-        public async Task<IEnumerable<PatientsModel>> GetByQueueStatusAsync(string queueStatus)
+        public async Task<IEnumerable<PatientsModel>> GetByQueueStatusAsync(string queueStatus, int pageNumber, int pageSize)
         {
-            return await _context.Patients.Where(patients => patients.QueueStatus == queueStatus).ToListAsync();
+            return await _context.Patients.Where(patients => patients.QueueStatus == queueStatus).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task AddAsync(PatientsModel patients)

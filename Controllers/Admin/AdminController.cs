@@ -39,13 +39,15 @@ namespace RudyHealthCare.Controllers.Admin
 
         [HttpGet]
         [Route("/Admin/Dashboard")]
-        public async Task<IActionResult> Dashboard()
+        public async Task<IActionResult> Dashboard(int page = 1, int pageSize = 10)
         {
             var totalCount = await _repository.GetTotalCountAsync();
             var totalCountQueue = await _repository.GetTotalCountQueueStatusAsync("Antri");
             var totalCountAccepted = await _repository.GetTotalCountQueueStatusAsync("Diterima");
             var totalCountRejected = await _repository.GetTotalCountQueueStatusAsync("Ditolak");
-            var patientsData = await _repository.GetAllAsync();
+            var patientsData = await _repository.GetPatientsAsync(page, pageSize);
+
+            // var patientsData = await _repository.GetAllAsync();
 
             var patientsHelperBlueprint = new PatientsHelperBlueprint
             {
@@ -53,7 +55,9 @@ namespace RudyHealthCare.Controllers.Admin
                 TotalCountQueue = totalCountQueue,
                 TotalCountAccepted = totalCountAccepted,
                 TotalCountRejected = totalCountRejected,
-                Patients = patientsData
+                Patients = patientsData,
+                PageNumber = page,
+                PageSize = pageSize
             };
 
             if (patientsData != null)
@@ -153,15 +157,17 @@ namespace RudyHealthCare.Controllers.Admin
 
         [HttpGet]
         [Route("/Admin/Queues/{queueStatus?}")]
-        public async Task<IActionResult> Queues(string queueStatus = "Antri")
+        public async Task<IActionResult> Queues(string queueStatus = "Antri", int page = 1, int pageSize = 10)
         {
             if (!string.IsNullOrEmpty(queueStatus))
             {
-                var patientsQueueData = await _repository.GetByQueueStatusAsync(queueStatus);
+                var patientsQueueData = await _repository.GetByQueueStatusAsync(queueStatus, page, pageSize);
 
                 var patientsHelperBlueprint = new PatientsHelperBlueprint
                 {
-                    Patients = patientsQueueData
+                    Patients = patientsQueueData,
+                    PageNumber = page,
+                    PageSize = pageSize
                 };
 
                 return View("Views/Admin/Queues.cshtml", patientsHelperBlueprint);
