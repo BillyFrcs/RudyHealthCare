@@ -30,15 +30,32 @@ namespace RudyHealthCare.Repositories.Patients
             return await _context.Patients.CountAsync(patients => patients.QueueStatus == queueStatus);
         }
 
-        public async Task<IEnumerable<PatientsModel>> GetAllAsync()
+        public async Task<IEnumerable<PatientsModel>> GetAllAsync(int pageNumber, int pageSize)
         {
             var query = _context.Patients.AsQueryable();
 
             query = query.OrderByDescending(patient => patient.CreatedAt);
 
-            return await query.ToListAsync();
+            return await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
             // return await _context.Patients.ToListAsync();
+        }
+
+        public async Task<IEnumerable<PatientsModel>> GetAllQueueStatusAsync(string searchTerm, int pageNumber, int pageSize)
+        {
+            var query = _context.Patients.Where(patient => patient.QueueStatus == "Antri");
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(patient => patient.Name != null && patient.Name.Contains(searchTerm.ToLower()) ||
+                    patient.IdentityNumber != null && patient.IdentityNumber.Contains(searchTerm.ToLower()) ||
+                    patient.PhoneNumber != null && patient.PhoneNumber.Contains(searchTerm.ToLower()) ||
+                    patient.Email != null && patient.Email.Contains(searchTerm.ToLower()) ||
+                    patient.QueueNumber != null && patient.QueueNumber.Contains(searchTerm.ToLower())
+                );
+            }
+
+            return await query.OrderByDescending(patient => patient.CreatedAt).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task<IEnumerable<PatientsModel>> GetPatientsAsync(int pageNumber, int pageSize)

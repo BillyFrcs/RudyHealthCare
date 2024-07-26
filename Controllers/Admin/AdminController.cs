@@ -69,6 +69,8 @@ namespace RudyHealthCare.Controllers.Admin
         [HttpGet]
         public async Task<IActionResult> Search(PatientsHelperBlueprint patientsHelperBlueprint, int page = 1, int pageSize = 10)
         {
+            var patientsData = await _repository.GetAllAsync(page, pageSize);
+
             /*
             if (!string.IsNullOrEmpty(patientsBlueprint.SearchTerm))
             {
@@ -78,8 +80,6 @@ namespace RudyHealthCare.Controllers.Admin
             }
             */
 
-            var patientsData = await _repository.GetAllAsync();
-
             if (!string.IsNullOrEmpty(patientsHelperBlueprint.SearchTerm))
             {
                 var searchTermLower = patientsHelperBlueprint.SearchTerm.ToLower();
@@ -110,45 +110,25 @@ namespace RudyHealthCare.Controllers.Admin
             }
 
             patientsHelperBlueprint.Patients = patientsData.ToList();
+            patientsHelperBlueprint.PageNumber = page;
+            patientsHelperBlueprint.PageSize = pageSize;
+            patientsHelperBlueprint.SearchTerm = patientsHelperBlueprint.SearchTerm;
 
             return View(nameof(Dashboard), patientsHelperBlueprint);
         }
 
         [HttpGet]
-        public async Task<IActionResult> SearchQueues(PatientsHelperBlueprint patientsHelperBlueprint, int page = 1, int pageSize = 10)
+        public async Task<IActionResult> SearchQueues(string searchTerm, int page = 1, int pageSize = 10)
         {
-            var patientsData = await _repository.GetAllAsync();
+            var patientsData = await _repository.GetAllQueueStatusAsync(searchTerm, page, pageSize);
 
-            if (!string.IsNullOrEmpty(patientsHelperBlueprint.SearchTerm))
+            var patientsHelperBlueprint = new PatientsHelperBlueprint
             {
-                var searchTermLower = patientsHelperBlueprint.SearchTerm.ToLower();
-
-                patientsData = patientsData.Where(patient =>
-                    patient.Name != null && patient.Name.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
-                    patient.IdentityNumber != null && patient.IdentityNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
-                    patient.PhoneNumber != null && patient.PhoneNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
-                    patient.Email != null && patient.Email.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
-                    patient.QueueNumber != null && patient.QueueNumber.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
-                    patient.QueueStatus != null && patient.QueueStatus.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
-                    patient.Gender != null && patient.Gender.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase) ||
-                    patient.Profession != null && patient.Profession.Contains(searchTermLower, StringComparison.CurrentCultureIgnoreCase)
-                );
-
-                /*
-                patientsData = patientsData.Where(patient =>
-                    patient.Name.ToLower().Contains(searchTermLower) ||
-                    patient.IdentityNumber.ToLower().Contains(searchTermLower) ||
-                    patient.PhoneNumber.ToLower().Contains(searchTermLower) ||
-                    patient.Email.ToLower().Contains(searchTermLower) ||
-                    patient.QueueNumber.ToLower().Contains(searchTermLower) ||
-                    patient.QueueStatus.ToLower().Contains(searchTermLower) ||
-                    patient.Gender.ToLower().Contains(searchTermLower) ||
-                    patient.Profession.ToLower().Contains(searchTermLower)
-                );
-                */
-            }
-
-            patientsHelperBlueprint.Patients = patientsData.ToList();
+                Patients = patientsData,
+                PageNumber = page,
+                PageSize = pageSize,
+                SearchTerm = searchTerm
+            };
 
             return View(nameof(Queues), patientsHelperBlueprint);
         }
