@@ -41,17 +41,6 @@
                 </a>
             </li>
         </ul>
-
-        @if (User?.Identity?.IsAuthenticated == true)
-        {
-            <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" class="sidebar-footer">
-                <button type="submit" class="btn text-white sidebar-link">
-                    <i class="lni lni-exit"></i>
-
-                    <span>Logout</span>
-                </button>
-            </form>
-        }
     </aside>
 
     <div class="main p-3">

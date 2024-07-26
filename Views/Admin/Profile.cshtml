@@ -37,13 +37,6 @@
                 </a>
             </li>
         </ul>
-
-        <div class="sidebar-footer">
-            <a asp-controller="" asp-action="" class="sidebar-link">
-                <i class="lni lni-exit"></i>
-                <span>Logout</span>
-            </a>
-        </div>
     </aside>
 
     <div class="main p-3">
@@ -54,6 +47,14 @@
                 <p class="lead fs-6 my-1">Email : @Model.Email</p>
                 <p class="lead fs-6 my-1">Role : @string.Join(", ", Model!.Role!)</p>
             </div>
+
+            @if (User?.Identity?.IsAuthenticated == true)
+            {
+                <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post">
+                    <button type="submit"
+                        class="btn btn btn-danger rounded-3 border-0 shadow-lg w-auto h-auto text-white">Logout</button>
+                </form>
+            }
         </div>
     </div>
 </section>
