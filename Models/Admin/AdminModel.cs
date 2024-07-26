@@ -9,19 +9,17 @@ namespace RudyHealthCare.Models.Admin
 {
     public class AdminModel
     {
-        [Key]
-        public string? AdminId { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
 
         [Required]
-        public string? Username { get; set; }
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = string.Empty;
 
-        [Required]
-        public string? Email { get; set; }
-
-        [Required]
-        public string? Password { get; set; }
-
-        [Required]
         public string? Role { get; set; }
+        public string? ReturnUrl { get; set; }
+
+        public bool RememberMe { get; set; }
     }
 }

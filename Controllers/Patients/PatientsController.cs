@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using RudyHealthCare.Blueprints;
+using RudyHealthCare.Blueprints.Patients;
 using RudyHealthCare.Data;
 using RudyHealthCare.Models;
 using RudyHealthCare.Models.Patients;

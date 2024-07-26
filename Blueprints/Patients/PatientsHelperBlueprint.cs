@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+
 using RudyHealthCare.Models.Patients;
 
-namespace RudyHealthCare.Blueprints
+namespace RudyHealthCare.Blueprints.Patients
 {
     public class PatientsHelperBlueprint
     {

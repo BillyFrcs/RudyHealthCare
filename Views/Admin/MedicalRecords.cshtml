@@ -3,7 +3,7 @@
     Layout = "_Layout";
 }
 
-@model RudyHealthCare.Blueprints.PatientsMedicalRecordsBlueprint
+@model RudyHealthCare.Blueprints.Patients.PatientsMedicalRecordsBlueprint
 
 @* @model RudyHealthCare.Models.Patients.PatientsModel *@
 
@@ -284,20 +284,42 @@
                         </div>
                     </div>
 
-                    <div class="mt-4">
-                        <div class="d-flex justify-content-start">
-                            <h6 class="text-start fw-bold fs-5">Hasil Diagnosa</h6>
-                        </div>
+                    @if (User.IsInRole("Doctor"))
+                    {
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-start">
+                                <h6 class="text-start fw-bold fs-5">Hasil Diagnosa</h6>
+                            </div>
 
-                        <div class="row input-container d-flex align-items-center mt-3">
-                            <div class="">
-                                <textarea class="form-control rounded-4 custom-input no-resize" asp-for="DiagnoseResult"
-                                    rows="5" placeholder="Hasil diagnosa dokter"></textarea>
+                            <div class="row input-container d-flex align-items-center mt-3">
+                                <div class="">
+                                    <textarea class="form-control rounded-4 custom-input no-resize" asp-for="DiagnoseResult"
+                                        rows="8" placeholder="Hasil diagnosa dokter"></textarea>
 
-                                <span class="lead fw-light text-danger fs-6" asp-validation-for="DiagnoseResult"></span>
+                                    <span class="lead fw-light text-danger fs-6" asp-validation-for="DiagnoseResult"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                    else if (User.IsInRole("Nurse"))
+                    {
+                        <div class="mt-4">
+                            <div class="row d-flex justify-content-start">
+                                <h6 class="text-start fw-bold fs-5">Hasil Diagnosa</h6>
+
+                                <p class="lead fw-normal fs-6 text-warning">Hanya bisa di edit oleh Dokter</p>
+                            </div>
+
+                            <div class="row input-container d-flex align-items-center mt-3">
+                                <div class="">
+                                    <textarea class="form-control rounded-4 custom-input no-resize" asp-for="DiagnoseResult"
+                                        rows="8" placeholder="Hasil diagnosa dokter" readonly></textarea>
+
+                                    <span class="lead fw-light text-danger fs-6" asp-validation-for="DiagnoseResult"></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
 
                     <div class="d-flex justify-content-end mt-4">
                         <a type="submit" asp-controller="Admin" asp-action="Dashboard"

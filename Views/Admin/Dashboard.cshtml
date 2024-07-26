@@ -5,7 +5,7 @@
     var totalCount = ViewData["TotalCount"];
 }
 
-@model RudyHealthCare.Blueprints.PatientsHelperBlueprint
+@model RudyHealthCare.Blueprints.Patients.PatientsHelperBlueprint
 
 @* @model IEnumerable<RudyHealthCare.Models.Patients.PatientsModel> *@
 
@@ -42,12 +42,16 @@
             </li>
         </ul>
 
-        <div class="sidebar-footer">
-            <a asp-controller="" asp-action="" class="sidebar-link">
-                <i class="lni lni-exit"></i>
-                <span>Logout</span>
-            </a>
-        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" class="sidebar-footer">
+                <button type="submit" class="btn text-white sidebar-link">
+                    <i class="lni lni-exit"></i>
+
+                    <span>Logout</span>
+                </button>
+            </form>
+        }
     </aside>
 
     <div class="main p-3">
@@ -113,14 +117,14 @@
                     <form id="SearchForm" asp-controller="Admin" asp-action="Search" method="get"
                         class="form-outline d-flex gap-3 my-3" data-mdb-input-init>
                         <input type="search" id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm"
-                            asp-for="SearchTerm" class="form-control custom-input rounded-3 shadow-sm"
-                            placeholder="Cari data pasien" required />
+                            class="form-control custom-input rounded-3 shadow-sm" placeholder="Cari data pasien"
+                            required />
 
                         <button type="submit" class="btn btn-primary main-background-color shadow-lg">
                             <i class="fas fa-search"></i>
                         </button>
 
-                        <span asp-validation-for="SearchTerm" class="lead fw-light text-danger fs-6"></span>
+                        @* <span asp-validation-for="SearchTerm" class="lead fw-light text-danger fs-6"></span> *@
                     </form>
                 </div>
 

@@ -5,14 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 using RudyHealthCare.Repositories.Patients;
 using RudyHealthCare.Blueprints;
 using RudyHealthCare.Models.Patients;
-using Microsoft.EntityFrameworkCore;
+using RudyHealthCare.Blueprints.Patients;
 
 namespace RudyHealthCare.Controllers.Admin
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IPatientsRepository _repository;
@@ -30,12 +34,6 @@ namespace RudyHealthCare.Controllers.Admin
             _logger = logger;
         }
         */
-
-        [Route("/Admin/Login")]
-        public IActionResult Login()
-        {
-            return View("Views/Admin/Login.cshtml");
-        }
 
         [HttpGet]
         [Route("/Admin/Dashboard")]
@@ -311,12 +309,6 @@ namespace RudyHealthCare.Controllers.Admin
             return RedirectToAction(nameof(Dashboard));
 
             // return Json(new { success = true });
-        }
-
-        [Route("/Admin/Profile")]
-        public IActionResult Profile()
-        {
-            return View("Views/Admin/Profile.cshtml");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

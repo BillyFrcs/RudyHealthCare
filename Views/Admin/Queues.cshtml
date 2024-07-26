@@ -5,7 +5,7 @@
     // var Patients = ViewData["Patients"] as IEnumerable<RudyHealthCare.Models.Patients.PatientsModel>;
 }
 
-@model RudyHealthCare.Blueprints.PatientsHelperBlueprint
+@model RudyHealthCare.Blueprints.Patients.PatientsHelperBlueprint
 
 <section class="wrapper">
     <aside id="sidebar" class="rounded-end-4">
@@ -63,6 +63,8 @@
                     <button type="submit" class="btn btn-primary main-background-color shadow-lg">
                         <i class="fas fa-search"></i>
                     </button>
+
+                    @* <span asp-validation-for="SearchTerm" class="lead fw-light text-danger fs-6"></span> *@
                 </form>
             </div>
 
