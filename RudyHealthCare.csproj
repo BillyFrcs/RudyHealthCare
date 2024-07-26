@@ -13,6 +13,7 @@
       <PackageReference Include="jQuery" Version="3.7.1" />
       <PackageReference Include="jQuery.Validation" Version="1.20.0" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.7" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
