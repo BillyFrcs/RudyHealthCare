@@ -31,6 +31,8 @@
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Nama Lengkap</p>
+
                             <input type="text" asp-for="Name" class="form-control rounded-5 custom-input"
                                 placeholder="Masukan nama lengkap">
 
@@ -40,8 +42,10 @@
 
                     <div class="col-12 col-md-6 d-flex justify-content-end">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Nomor KTP / NIK</p>
+
                             <input type="number" asp-for="IdentityNumber" class="form-control rounded-5 custom-input"
-                                placeholder="Nomor Induk Kependudukan (NIK)">
+                                placeholder="Masukan Nomor Induk Kependudukan (NIK)">
 
                             <span asp-validation-for="IdentityNumber" class="lead fw-light text-danger fs-6"></span>
                         </div>
@@ -49,8 +53,10 @@
 
                     <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Tempat Lahir</p>
+
                             <input type="text" asp-for="PlaceOfBirth" class="form-control rounded-5 custom-input"
-                                placeholder="Tempat lahir">
+                                placeholder="Masukan Tempat lahir">
 
                             <span asp-validation-for="PlaceOfBirth" class="lead fw-light text-danger fs-6"></span>
                         </div>
@@ -58,8 +64,10 @@
 
                     <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Tanggal Lahir</p>
+
                             <input type="text" asp-for="DateOfBirth" class="form-control rounded-5 custom-input"
-                                onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Tanggal lahir">
+                                onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Masukan Tanggal lahir">
 
                             <span asp-validation-for="DateOfBirth" class="lead fw-light text-danger fs-6"></span>
                         </div>
@@ -67,8 +75,10 @@
 
                     <div class="col-12 col-md-6 d-flex justify-content-end mt-3">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Umur</p>
+
                             <input type="number" asp-for="Age" class="form-control rounded-5 custom-input" min="1"
-                                placeholder="Umur">
+                                placeholder="Masukan Umur">
 
                             <span asp-validation-for="Age" class="lead fw-light text-danger fs-6"></span>
                         </div>
@@ -111,7 +121,7 @@
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
                         <div class="col-12 col-md-12">
                             <input type="text" asp-for="Address" class="form-control rounded-5 custom-input"
-                                placeholder="Alamat lengkap">
+                                placeholder="Masukan Alamat lengkap">
 
                             <span asp-validation-for="Address" class="lead fw-light text-danger fs-6"></span>
                         </div>
@@ -127,6 +137,8 @@
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Email</p>
+
                             <input type="email" asp-for="Email" class="form-control rounded-5 custom-input"
                                 placeholder="Masukan email">
 
@@ -136,8 +148,10 @@
 
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Nomor Handphone</p>
+
                             <input type="number" asp-for="PhoneNumber" class="form-control rounded-5 custom-input"
-                                placeholder="Masukan no HP">
+                                placeholder="Masukan nomor HP">
 
                             <span asp-validation-for="PhoneNumber" class="lead fw-light text-danger fs-6"></span>
                         </div>
@@ -153,9 +167,11 @@
                 <div class="row input-container d-flex align-items-center mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Status</p>
+
                             <select asp-for="Status" class="form-select rounded-5 custom-input"
                                 aria-label="Default select example">
-                                <option selected disabled>Masukan status</option>
+                                <option selected disabled>Pilih status</option>
                                 <option>Lajang</option>
                                 <option>Menikah</option>
                             </select>
@@ -166,6 +182,8 @@
 
                     <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-start">
                         <div class="col-12 col-md-12">
+                            <p class="lead fw-normal fs-6 main-font-color">Pekerjaan</p>
+
                             <input type="text" asp-for="Profession" class="form-control rounded-5 custom-input"
                                 placeholder="Masukan pekerjaan">
 
