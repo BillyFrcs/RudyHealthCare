@@ -1,0 +1,9 @@
+Username = "billy"
+Email = "billy@gmail.com"
+Password = "Billy@1234"
+Role = "Doctor"
+                    
+Username = "satya"
+Email = "satya@gmail.com"
+Password = "Satya@1234"
+Role = "Nurse"
