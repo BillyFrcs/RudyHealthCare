@@ -42,7 +42,7 @@
             </li>
         </ul>
 
-        @if (User.Identity.IsAuthenticated)
+        @if (User?.Identity?.IsAuthenticated == true)
         {
             <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" class="sidebar-footer">
                 <button type="submit" class="btn text-white sidebar-link">
