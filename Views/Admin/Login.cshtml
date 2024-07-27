@@ -40,7 +40,7 @@
                         <input type="email" asp-for="Email" class="form-control shadow-lg rounded-4" placeholder="Email"
                             required>
 
-                        <label asp-for="Email">Email address</label>
+                        <label asp-for="Email">Email</label>
 
                         <div class="col-12 col-md-10 d-flex justify-content-start">
                             <span asp-validation-for="Email" class="lead fw-normal text-danger fs-6"></span>
@@ -66,8 +66,9 @@
                         </label>
                     </div>
 
-                    <div asp-validation-summary="ModelOnly"
-                        class="text-danger text-start align-items-start d-flex form-floating justify-content-start"></div>
+                    <div class="col-12 col-md-10 d-flex justify-content-start align-items-start text-start">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    </div>
 
                     <button type="submit"
                         class="btn btn-lg btn-primary rounded-5 border-0 shadow-lg w-100 h-auto custom-gradient-btn text-white">Login</button>
