@@ -68,5 +68,8 @@ namespace RudyHealthCare.Models.Patients
 
         [Required]
         public string? DiagnoseResult { get; set; }
+
+        [Required]
+        public string? MedicineRecommendations { get; set; }
     }
 }
