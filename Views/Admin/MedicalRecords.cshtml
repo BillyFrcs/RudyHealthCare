@@ -319,6 +319,21 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-start">
+                                <h6 class="text-start fw-bold fs-5">Rekomendasi Obat</h6>
+                            </div>
+
+                            <div class="row input-container d-flex align-items-center mt-3">
+                                <div class="">
+                                    <textarea class="form-control rounded-4 custom-input no-resize" asp-for="MedicineRecommendations"
+                                        rows="8" placeholder="Rekomendasi obat dari dokter"></textarea>
+
+                                    <span class="lead fw-light text-danger fs-6" asp-validation-for="MedicineRecommendations"></span>
+                                </div>
+                            </div>
+                        </div>
                     }
                     else if (User.IsInRole("Nurse"))
                     {
@@ -335,6 +350,23 @@
                                         rows="8" placeholder="Hasil diagnosa dokter" readonly></textarea>
 
                                     <span class="lead fw-light text-danger fs-6" asp-validation-for="DiagnoseResult"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="row d-flex justify-content-start">
+                                <h6 class="text-start fw-bold fs-5">Rekomendasi Obat</h6>
+
+                                <p class="lead fw-normal fs-6 text-warning">Hanya bisa di edit oleh Dokter</p>
+                            </div>
+
+                            <div class="row input-container d-flex align-items-center mt-3">
+                                <div class="">
+                                    <textarea class="form-control rounded-4 custom-input no-resize" asp-for="MedicineRecommendations"
+                                        rows="8" placeholder="Rekomendasi obat dari dokter"></textarea>
+
+                                    <span class="lead fw-light text-danger fs-6" asp-validation-for="MedicineRecommendations"></span>
                                 </div>
                             </div>
                         </div>

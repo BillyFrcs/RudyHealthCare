@@ -3,6 +3,8 @@
     Layout = "_Layout";
 }
 
+@model RudyHealthCare.Blueprints.Patients.PatientsHelperBlueprint
+
 <header class="header fixed-top">
     <nav class="navbar navbar-expand-lg bg-white shadow-lg">
         <div class="container ">
@@ -57,6 +59,7 @@
                 <h2 class="greet-text display-5 fw-normal">HALOOO, SELAMAT DATANG DI</h2>
                 <h1 class="text-white fw-bold hero-text">GIDION FARMA</h1>
                 <p class="lead text-white fw-normal">Silahkan daftar untuk konsultasi dengan dr. Rudy Gunawan</p>
+                <p class="lead text-white fw-normal">Terdapat @Model.TotalCountQueue pasien yang sedang antri hari ini.</p>
 
                 <div class="d-flex">
                     <a asp-controller="Patients" asp-action="RegistrationForms"
