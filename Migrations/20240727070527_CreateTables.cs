@@ -73,7 +73,8 @@ namespace RudyHealthCare.Migrations
                     Profession = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QueueStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ComplaintsOfPain = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DiagnoseResult = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DiagnoseResult = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MedicineRecommendations = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

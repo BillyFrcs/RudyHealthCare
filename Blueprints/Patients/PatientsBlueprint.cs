@@ -40,7 +40,7 @@ namespace RudyHealthCare.Blueprints.Patients
         public string? Email { get; set; }
 
         [Required(ErrorMessage = "Nomor HP tidak boleh kosong")]
-        [StringLength(12, ErrorMessage = "Nomor HP tidak boleh lebih dari 12 karakter")]
+        [StringLength(14, ErrorMessage = "Nomor HP tidak boleh lebih dari 14 karakter")]
         public string? PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Status tidak boleh kosong")]
@@ -98,6 +98,12 @@ namespace RudyHealthCare.Blueprints.Patients
         public string? DiagnoseResult
         {
             get => "Belum ada hasil diagnosa dari dokter.";
+        }
+
+        [Required]
+        public string? MedicineRecommendations 
+        {
+            get => "Belum ada rekomendasi obat dari dokter.";
         }
     }
 }
