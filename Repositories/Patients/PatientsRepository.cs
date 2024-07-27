@@ -76,7 +76,7 @@ namespace RudyHealthCare.Repositories.Patients
 
         public async Task<IEnumerable<PatientsModel>> GetByQueueStatusAsync(string queueStatus, int pageNumber, int pageSize)
         {
-            return await _context.Patients.Where(patients => patients.QueueStatus == queueStatus).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            return await _context.Patients.OrderByDescending(patient => patient.CreatedAt).Where(patients => patients.QueueStatus == queueStatus).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task AddAsync(PatientsModel patients)
