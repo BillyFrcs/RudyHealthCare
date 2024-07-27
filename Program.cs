@@ -11,6 +11,7 @@ using FluentValidation;
 using RudyHealthCare.Data;
 using RudyHealthCare.Repositories.Patients;
 using RudyHealthCare.Models.Patients;
+using RudyHealthCare.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +48,9 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Admin/Login"; // Custom login path
     options.AccessDeniedPath = "/Admin/AccessDenied"; // Custom access denied path
 });
+
+builder.Services.AddSingleton<TwilioService>();
+builder.Services.AddSingleton<EmailService>();
 
 // Add Antiforgery service
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
