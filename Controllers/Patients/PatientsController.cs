@@ -7,16 +7,22 @@ using RudyHealthCare.Data;
 using RudyHealthCare.Models;
 using RudyHealthCare.Models.Patients;
 using RudyHealthCare.Repositories.Patients;
+using RudyHealthCare.Services;
 
 namespace RudyHealthCare.Controllers.Patients
 {
     public class PatientsController : Controller
     {
         private readonly IPatientsRepository _patientsRepository;
+        private readonly TwilioService _twilioService;
+        private readonly EmailService _emailService;
 
-        public PatientsController(IPatientsRepository patientsRepository)
+
+        public PatientsController(IPatientsRepository patientsRepository, TwilioService twilioService, EmailService emailService)
         {
             _patientsRepository = patientsRepository;
+            _twilioService = twilioService;
+            _emailService = emailService;
         }
 
         /*
@@ -66,10 +72,37 @@ namespace RudyHealthCare.Controllers.Patients
                     Profession = patientsBlueprint.Profession,
                     QueueStatus = patientsBlueprint.QueueStatus,
                     ComplaintsOfPain = patientsBlueprint.ComplaintsOfPain,
-                    DiagnoseResult = patientsBlueprint.DiagnoseResult
+                    DiagnoseResult = patientsBlueprint.DiagnoseResult,
+                    MedicineRecommendations = patientsBlueprint.MedicineRecommendations
                 };
 
                 await _patientsRepository.AddAsync(patients);
+
+                if (string.IsNullOrEmpty(patients.Email))
+                {
+                    Console.WriteLine("Invalid email." + patients.Email);
+                }
+
+                var message = $"Halo {patients.Name}, terima kasih telah registrasi di Rudy Health Care. Nomor antrian Anda adalah {patients.QueueNumber}. Silahkan menunggu panggilan dari resepsionis kami untuk konsultasi dengan dr. Rudy Gunawan.";
+
+                if (!string.IsNullOrEmpty(patients.Email))
+                {
+                    await _emailService.SendEmailAsync(patients.Email, "Registrasi Berhasil", message);
+                }
+
+                /*
+                // Send WhatsApp message
+                if (string.IsNullOrEmpty(patients.PhoneNumber))
+                {
+                    Console.WriteLine("Invalid phone number." + patients.PhoneNumber);
+                }
+
+                string formatPhoneNumber = $"+{patients.PhoneNumber}";
+
+                var message = $"Halo {patients.Name}, terima kasih telah mendaftar di Rudy Health Care. Nomor antrian Anda adalah {patients.QueueNumber}. Silahkan menunggu panggilan dari petugas kami.";
+
+                await _twilioService.SendWhatsAppMessage(formatPhoneNumber, message);
+                */
 
                 return Json(new { success = true });
 
@@ -79,6 +112,11 @@ namespace RudyHealthCare.Controllers.Patients
             // return View(registrationFormsViewModel);
 
             return Json(new { success = false, errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
+        }
+
+        public string GenerateQueueNumber(int number)
+        {
+            return $"A{number:D3}";
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

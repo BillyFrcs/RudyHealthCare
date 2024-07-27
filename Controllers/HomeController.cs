@@ -1,24 +1,36 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-
+using RudyHealthCare.Blueprints.Patients;
 using RudyHealthCare.Models;
+using RudyHealthCare.Repositories.Patients;
 
 namespace RudyHealthCare.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPatientsRepository _repository;
+
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPatientsRepository repository)
         {
+            _repository = repository;
             _logger = logger;
         }
 
+        [HttpGet]
         [Route("/")]
         [Route("/Home")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var totalCountQueue = await _repository.GetTotalCountQueueStatusAsync("Antri");
+
+            var patientsHelperBlueprint = new PatientsHelperBlueprint
+            {
+                TotalCountQueue = totalCountQueue
+            };
+
+            return View(patientsHelperBlueprint);
         }
 
         [Route("/Privacy")]

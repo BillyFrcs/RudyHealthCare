@@ -199,7 +199,8 @@ namespace RudyHealthCare.Controllers.Admin
                 Profession = patients.Profession,
                 QueueStatus = patients.QueueStatus,
                 ComplaintsOfPain = patients.ComplaintsOfPain,
-                DiagnoseResult = patients.DiagnoseResult
+                DiagnoseResult = patients.DiagnoseResult,
+                MedicineRecommendations = patients.MedicineRecommendations
             };
 
             // ViewData["Patients"] = patients;
@@ -246,6 +247,7 @@ namespace RudyHealthCare.Controllers.Admin
                 patients.QueueStatus = patientsMedicalRecordsBlueprint.QueueStatus;
                 patients.ComplaintsOfPain = patientsMedicalRecordsBlueprint.ComplaintsOfPain;
                 patients.DiagnoseResult = patientsMedicalRecordsBlueprint.DiagnoseResult;
+                patients.MedicineRecommendations = patientsMedicalRecordsBlueprint.MedicineRecommendations;
 
                 try
                 {
